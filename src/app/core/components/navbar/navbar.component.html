@@ -1,1 +1,14 @@
-<p>navbar works!</p>
+<nav class="container">
+  <h1>Groupomania</h1>
+  <div>
+    <ul *ngIf="isAuth; else auth">
+      <li>Déconnexion</li>
+    </ul>
+    <ng-template #auth>
+      <ul>
+        <li><a routerLink="/connect/login">Connexion</a></li>
+        <li><a routerLink="/connect/signup">Inscription</a></li>
+      </ul>
+    </ng-template>
+  </div>
+</nav>
