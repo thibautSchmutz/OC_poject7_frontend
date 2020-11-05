@@ -1,0 +1,28 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100px;
+  padding: 30px;
+  width: 100vw;
+
+  background-color: rgb(226, 226, 226);
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 950px;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+}
+
+li {
+  margin-left: 20px;
+}
