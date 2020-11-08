@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../../auth.service';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ import { AuthService } from '../../auth.service';
 export class LoginComponent implements OnInit {
   public form: FormGroup;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -23,9 +24,7 @@ export class LoginComponent implements OnInit {
     if (this.form.status === 'VALID') {
       this.authService.login(this.form.value).subscribe(
         (res) => {
-          console.log(res);
-          this.authService.isAuth$.next(true);
-          this.form.reset();
+          this.router.navigate(['home']);
         },
         (err) => console.log(err)
       );
