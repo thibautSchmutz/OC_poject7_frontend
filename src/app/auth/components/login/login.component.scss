@@ -48,6 +48,11 @@ form {
 
       background-color: $base-color;
       box-shadow: $base-shadow-inset;
+
+      &::placeholder {
+        color: $second-font-color;
+        font-style: italic;
+      }
     }
 
     input[formControlName="password"] {
