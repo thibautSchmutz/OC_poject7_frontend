@@ -21,19 +21,16 @@ export class LoginComponent implements OnInit {
 
   login() {
     if (this.form.status === 'VALID') {
-      console.log('formulaire valid');
-      console.log(this.form.value);
+      this.authService.login(this.form.value).subscribe(
+        (res) => {
+          console.log(res);
+          this.authService.isAuth$.next(true);
+          this.form.reset();
+        },
+        (err) => console.log(err)
+      );
     } else if (this.form.status === 'INVALID') {
       console.log('formulaire invalid');
     }
-
-    // this.authService.login().subscribe(
-    //   (res) => {
-    //     console.log(res);
-    //     console.log(this.form);
-    //     this.form.reset();
-    //   },
-    //   (err) => console.log(err)
-    // );
   }
 }
