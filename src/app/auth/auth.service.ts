@@ -20,7 +20,8 @@ export class AuthService {
     return this.http.post(`${environment.apiUrl}/users/login`, userInfos).pipe(
       tap((res) => {
         this.localstorageService.set('userId', res['userId']);
-        this.localstorageService.set('token', res['token']);
+        this.localstorageService.set('token', `Bearer ${res['token']}`);
+        this.isAuth$.next(true);
       })
     );
   }
