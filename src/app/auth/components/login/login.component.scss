@@ -48,19 +48,31 @@ form {
 
       background-color: $base-color;
       box-shadow: $base-shadow-inset;
-
-      &::placeholder {
-        color: $second-font-color;
-        font-style: italic;
-      }
     }
 
-    input[formControlName="password"] {
-      &::after {
-        content: "";
-        height: 1rem;
-        width: 1rem;
-        background-color: #fff;
+    input[formControlName="email"] ::placeholder {
+      color: $second-font-color;
+      font-style: italic;
+    }
+
+    .password-container {
+      display: flex;
+      position: relative;
+    }
+
+    .visible-toggle {
+      position: absolute;
+      cursor: pointer;
+      height: 1.5rem;
+      top: 50%;
+      transform: translateY(-40%);
+      right: 1rem;
+
+      path.hide-password {
+        fill: $base-font-color;
+      }
+      path.show-password {
+        fill: $punchy-color;
       }
     }
   }

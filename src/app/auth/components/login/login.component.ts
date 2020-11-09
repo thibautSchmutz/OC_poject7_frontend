@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../../auth.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
@@ -10,6 +10,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   public form: FormGroup;
+  @ViewChild('passwordToggle') passwordToggle: ElementRef;
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -24,13 +25,28 @@ export class LoginComponent implements OnInit {
     if (this.form.status === 'VALID') {
       this.authService.login(this.form.value).subscribe(
         (res) => {
-          this.authService.isAuth$.next(true);
           this.router.navigate(['home']);
         },
         (err) => console.log(err)
       );
     } else if (this.form.status === 'INVALID') {
       console.log('formulaire invalid');
+    }
+  }
+
+  showPassword(password) {
+    if (password.type === 'password') {
+      password.type = 'text';
+      this.passwordToggle.nativeElement.classList.replace(
+        'hide-password',
+        'show-password'
+      );
+    } else {
+      password.type = 'password';
+      this.passwordToggle.nativeElement.classList.replace(
+        'show-password',
+        'hide-password'
+      );
     }
   }
 }
