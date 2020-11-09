@@ -1,8 +1,10 @@
 <nav class="container">
-  <h1>Groupomania</h1>
+  <h1><a routerLink="/">Groupomania</a></h1>
   <div>
     <ul *ngIf="isAuth; else auth">
-      <li>Se déconnecter</li>
+      <li>
+        <a routerLink="/connect/login" (click)="logout()">Se déconnecter</a>
+      </li>
     </ul>
     <ng-template #auth>
       <ul>

@@ -7,9 +7,16 @@ import { AuthService } from '../../../auth/auth.service';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-  public isAuth;
+  public isAuth: boolean;
 
   constructor(private authService: AuthService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.authService.isAuth$.subscribe((bool) => (this.isAuth = bool));
+  }
+
+  logout() {
+    localStorage.clear();
+    this.authService.isAuth$.next(false);
+  }
 }

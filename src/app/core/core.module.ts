@@ -5,10 +5,11 @@ import { FourOhFourComponent } from './components/four-oh-four/four-oh-four.comp
 import { LocalstorageService } from './services/localstorage.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './interceptors/token.interceptor';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [NavbarComponent, FourOhFourComponent],
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   exports: [NavbarComponent, FourOhFourComponent],
   providers: [
     LocalstorageService,
