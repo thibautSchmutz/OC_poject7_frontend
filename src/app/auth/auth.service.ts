@@ -14,7 +14,12 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     private localstorageService: LocalstorageService
-  ) {}
+  ) {
+    // Aller chercher le token dans localstorage et changer la valeur de isAuth$ s'il y en a un
+    if (localStorage.getItem('token')) {
+      this.isAuth$.next(true);
+    }
+  }
 
   login(userInfos): Observable<{ userId: string; token: string }> {
     return this.http
@@ -26,7 +31,6 @@ export class AuthService {
         tap((res) => {
           this.localstorageService.set('userId', res.userId);
           this.localstorageService.set('token', `Bearer ${res.token}`);
-          this.isAuth$.next(true);
         })
       );
   }

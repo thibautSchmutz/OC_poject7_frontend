@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
     if (this.form.status === 'VALID') {
       this.authService.login(this.form.value).subscribe(
         (res) => {
+          this.authService.isAuth$.next(true);
           this.router.navigate(['home']);
         },
         (err) => console.log(err)
