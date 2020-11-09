@@ -1,5 +1,3 @@
 <div *ngFor="let post of posts$ | async as posts">
-  <p>{{ post.id }}</p>
-  <p>{{ post.content }}</p>
-  <!-- <app-post [postInfo]="post"></app-post> -->
+  <app-post [postInfo]="post"></app-post>
 </div>

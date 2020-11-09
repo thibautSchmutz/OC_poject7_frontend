@@ -22,14 +22,14 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    if (this.form.status === 'VALID') {
+    if (this.form.valid) {
       this.authService.login(this.form.value).subscribe(
         (res) => {
-          this.router.navigate(['home']);
+          this.router.navigate(['/']);
         },
         (err) => console.log(err)
       );
-    } else if (this.form.status === 'INVALID') {
+    } else {
       console.log('formulaire invalid');
     }
   }

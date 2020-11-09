@@ -1,1 +1,6 @@
-<p>post works!</p>
+<div>
+  <ng-container *ngIf="postInfo.imageUrl">
+    <img src="{{ postInfo.imageUrl }}" />
+  </ng-container>
+  <p>{{ postInfo.content }}</p>
+</div>

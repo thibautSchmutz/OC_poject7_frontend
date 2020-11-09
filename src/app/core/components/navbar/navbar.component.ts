@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { AuthService } from '../../../auth/auth.service';
 
 @Component({
@@ -7,16 +8,17 @@ import { AuthService } from '../../../auth/auth.service';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-  public isAuth: boolean;
+  public isAuth$: BehaviorSubject<boolean>;
 
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.authService.isAuth$.subscribe((bool) => (this.isAuth = bool));
+    this.isAuth$ = this.authService.isAuthBS$;
+    // this.authService.isAuth$.subscribe((val) => (this.isAuth = val));
   }
 
   logout() {
     localStorage.clear();
-    this.authService.isAuth$.next(false);
+    this.isAuth$.next(false);
   }
 }
