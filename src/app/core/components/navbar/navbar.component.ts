@@ -13,8 +13,7 @@ export class NavbarComponent implements OnInit {
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.isAuth$ = this.authService.isAuthBS$;
-    // this.authService.isAuth$.subscribe((val) => (this.isAuth = val));
+    this.isAuth$ = this.authService.isAuth$;
   }
 
   logout() {

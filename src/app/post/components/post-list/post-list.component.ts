@@ -22,7 +22,7 @@ export class PostListComponent implements OnInit {
   ngOnInit(): void {
     // Si le user n'est pas authentifié, on le redirige vers la page de connexion
     // Sinon, on charge les posts dans un observable et on subscribe dans le template via le pipe async
-    if (!this.authService.isAuthBS$.value) {
+    if (!this.authService.isAuth$.value) {
       this.router.navigate(['connect']);
     } else {
       this.posts$ = this.postService.getAllPosts();

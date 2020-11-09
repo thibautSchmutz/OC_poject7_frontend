@@ -9,16 +9,17 @@ import { tap, map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class AuthService {
-  public isAuthBS$ = new BehaviorSubject<boolean>(false);
+  public isAuth$ = new BehaviorSubject<boolean>(false);
 
   constructor(
     private http: HttpClient,
     private localstorageService: LocalstorageService
   ) {
-    // Aller chercher le token dans localstorage et changer la valeur de isAuth$ s'il y en a un
+    // Si un token est présent dans le localStorage,
+    // On passe la valeur "true" à isAuth$
     if (localStorage.getItem('token')) {
       // Ajout d'appel serveur vérif' token.
-      this.isAuthBS$.next(true);
+      this.isAuth$.next(true);
     }
   }
 
@@ -32,7 +33,7 @@ export class AuthService {
         tap((res) => {
           this.localstorageService.set('userId', res.userId);
           this.localstorageService.set('token', `Bearer ${res.token}`);
-          this.isAuthBS$.next(true);
+          this.isAuth$.next(true);
         })
       );
   }
