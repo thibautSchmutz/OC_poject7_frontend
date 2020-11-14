@@ -10,27 +10,56 @@
   width: 100vw;
 
   background-color: $base-color;
-  box-shadow: $base-shadow-inset;
-}
 
-.container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-  width: 950px;
+    width: 950px;
 
-  a {
-    text-decoration: none;
-    color: $base-font-color;
+    a {
+      text-decoration: none;
+      color: $base-font-color;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+
+      img {
+        max-height: 35px;
+        margin-right: 0.8rem;
+      }
+
+      a {
+        color: $punchy-color;
+      }
+    }
+
+    ul {
+      list-style: none;
+      display: flex;
+    }
+
+    li {
+      box-shadow: $base-shadow;
+      padding: 10px;
+      margin-left: 20px;
+      border-radius: 5px;
+
+      a:hover {
+        color: $punchy-color;
+      }
+    }
+
+    .active {
+      box-shadow: $base-shadow-inset;
+
+      a {
+        color: $punchy-color;
+      }
+    }
   }
-}
-
-ul {
-  list-style: none;
-  display: flex;
-}
-
-li {
-  margin-left: 20px;
 }

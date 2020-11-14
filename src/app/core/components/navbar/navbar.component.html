@@ -1,5 +1,8 @@
 <nav class="container">
-  <h1><a routerLink="/">Groupomania</a></h1>
+  <div class="logo">
+    <img src="../../../../assets/Groupomania_Logos/Logo_seul.svg" />
+    <h1><a routerLink="/">Groupomania</a></h1>
+  </div>
   <div>
     <ul *ngIf="isAuth$ | async; else auth">
       <li>
@@ -8,8 +11,12 @@
     </ul>
     <ng-template #auth>
       <ul>
-        <li><a routerLink="/connect/login">Connexion</a></li>
-        <li><a routerLink="/connect/signup">Inscription</a></li>
+        <li routerLinkActive="active">
+          <a routerLink="/connect/login">Connexion</a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="/connect/signup">Inscription</a>
+        </li>
       </ul>
     </ng-template>
   </div>
