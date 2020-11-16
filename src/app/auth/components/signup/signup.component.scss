@@ -1,0 +1,168 @@
+@import "../../../shared/variables";
+
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 90vh;
+
+  background-color: $base-color;
+}
+
+form {
+  background-color: $base-color;
+  box-shadow: $base-shadow;
+  padding: 3rem;
+  border-radius: 1rem;
+  width: 50%;
+  max-width: 700px;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+
+  h2 {
+    font-size: 2.3rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: $second-font-color;
+  }
+
+  .form-group {
+    margin: 0.5rem 0;
+
+    label {
+      font-size: 1.1rem;
+      color: $second-font-color;
+
+      span {
+        color: red;
+      }
+    }
+
+    .errorMessage {
+      color: red;
+      font-style: italic;
+    }
+
+    input {
+      margin-top: 0.5rem;
+      width: 100%;
+      height: 3rem;
+      border-radius: 2rem;
+      border: none;
+      outline: none;
+      padding: 1rem;
+      color: $second-font-color;
+      font-size: 1.1rem;
+
+      background-color: $base-color;
+      box-shadow: $base-shadow-inset;
+    }
+
+    input[formControlName="email"] ::placeholder {
+      color: $second-font-color;
+      font-style: italic;
+    }
+
+    .password-container {
+      display: flex;
+      position: relative;
+    }
+
+    .visible-toggle {
+      position: absolute;
+      cursor: pointer;
+      height: 1.5rem;
+      top: 50%;
+      transform: translateY(-40%);
+      right: 1rem;
+
+      path.hide-password {
+        fill: $base-font-color;
+      }
+      path.show-password {
+        fill: $punchy-color;
+      }
+    }
+  }
+
+  .image-container {
+    margin-top: 1rem;
+    padding: 2rem;
+    align-self: center;
+    box-shadow: $base-shadow;
+    border-radius: 1rem;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+
+    input {
+      cursor: pointer;
+      display: block;
+      height: 100%;
+      width: 100%;
+      opacity: 0;
+      position: absolute;
+      right: 0;
+      text-align: right;
+      top: 0;
+    }
+
+    &:hover label {
+      color: $punchy-color;
+    }
+
+    span {
+      font-style: italic;
+      font-size: 0.8rem;
+    }
+  }
+
+  button {
+    width: 100%;
+    height: 3rem;
+    border-radius: 2rem;
+    border: none;
+    outline: none;
+
+    margin-top: 2rem;
+
+    font-size: 1.2rem;
+    color: $punchy-color;
+
+    background-color: $base-color;
+    box-shadow: $base-shadow;
+
+    &:active {
+      color: $second-font-color;
+      box-shadow: $base-shadow-inset;
+    }
+  }
+
+  .signin-link {
+    place-self: center;
+    margin-top: 2rem;
+
+    a {
+      // text-decoration: none;
+      color: $base-font-color;
+
+      &:hover {
+        color: $punchy-color;
+      }
+    }
+  }
+
+  .form-legend {
+    margin-top: 1rem;
+    font-style: italic;
+
+    span {
+      color: red;
+    }
+  }
+}
