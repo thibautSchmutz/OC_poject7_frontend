@@ -63,7 +63,7 @@ export class LoginComponent implements OnInit {
         },
         (err) => {
           console.log(err);
-          this.matDialog.open(ModalComponent, { data: { err } });
+          this.matDialog.open(ModalComponent, { data: { loginError: err } });
         }
       );
     } else {

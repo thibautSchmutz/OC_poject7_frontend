@@ -1,7 +1,16 @@
-<h1 mat-dialog-title>Problème de Connexion</h1>
-<div mat-dialog-content>
-  <p>Code : {{ data.err.status }}</p>
-  <p>Utilisateur introuvable</p>
-
-  <button (click)="closeModal()">X</button>
-</div>
+<!-- LOGIN ERRORS Modal -->
+<ng-container *ngIf="data.loginError">
+  <h1 mat-dialog-title>{{ data.loginError.error }}</h1>
+  <div mat-dialog-content>
+    <p>Code : {{ data.loginError.status }}</p>
+    <button (click)="closeModal()">X</button>
+  </div>
+</ng-container>
+<!-- SIGNUP ERRORS Component -->
+<ng-container *ngIf="data.signupError">
+  <h1 mat-dialog-title>Problème de Connexion</h1>
+  <div mat-dialog-content>
+    <p>E-mail déjà utilisé</p>
+    <button (click)="closeModal()">X</button>
+  </div>
+</ng-container>
