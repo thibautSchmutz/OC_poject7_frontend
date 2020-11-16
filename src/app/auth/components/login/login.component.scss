@@ -39,6 +39,11 @@ form {
       color: $second-font-color;
     }
 
+    span {
+      color: red;
+      font-style: italic;
+    }
+
     input {
       margin-top: 0.5rem;
       width: 100%;
@@ -102,12 +107,12 @@ form {
     }
   }
 
-  .singup-link {
+  .signup-link {
     place-self: center;
     margin-top: 2rem;
 
     a {
-      text-decoration: none;
+      // text-decoration: none;
       color: $base-font-color;
 
       &:hover {

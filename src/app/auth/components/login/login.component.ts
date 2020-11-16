@@ -9,31 +9,31 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  public form: FormGroup;
+  // MODAL
+  validForm: boolean = true;
+
+  // RECUPERATION ELEMENTREF
   @ViewChild('passwordToggle') passwordToggle: ElementRef;
+
+  // DECLARATION FORMULAIRE
+  public form: FormGroup;
 
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
+    // CREATION FORMULAIRE
     this.form = new FormGroup({
       email: new FormControl('', [Validators.required, , Validators.email]),
       password: new FormControl('', [Validators.required]),
     });
   }
 
-  login() {
-    if (this.form.valid) {
-      this.authService.login(this.form.value).subscribe(
-        (res) => {
-          this.router.navigate(['/']);
-        },
-        (err) => console.log(err)
-      );
-    } else {
-      console.log('formulaire invalid');
-    }
+  // GETTERS - FORM CONTROLS
+  get email() {
+    return this.form.get('email');
   }
 
+  // AFFICHER MOT DE PASSE
   showPassword(password) {
     if (password.type === 'password') {
       password.type = 'text';
@@ -47,6 +47,21 @@ export class LoginComponent implements OnInit {
         'show-password',
         'hide-password'
       );
+    }
+  }
+
+  // SUBMIT
+  login() {
+    if (this.form.valid) {
+      this.authService.login(this.form.value).subscribe(
+        (res) => {
+          this.router.navigate(['/']);
+        },
+        (err) => console.log(err.status)
+      );
+    } else {
+      console.log('formulaire invalid');
+      this.validForm = false;
     }
   }
 }
