@@ -1,0 +1,24 @@
+// importation des éléments nécessaires à la création du thème
+@import "~@angular/material/theming";
+
+// Mixin SASS pour la gestion des couleurs
+@include mat-core();
+
+// Création de notre palette de couleur via des variables SASS
+// Obligation d'utiliser la fonction mat-palette() et les palettes de material*
+$groupomania-primary: mat-palette($mat-blue-grey);
+$groupomania-accent: mat-palette($mat-red, 800, 300, 900);
+// Optionnelle : Warn color
+$groupomania-warn: mat-palette($mat-deep-orange);
+
+// Création du theme, qui regroupe toutes les palettes
+$groupomania-theme: mat-light-theme(
+  $groupomania-primary,
+  $groupomania-accent,
+  $groupomania-warn
+);
+// Optionnelle : Dark theme
+// @@@@ inclure un dark theme ici de la manière qu'on a fait le light-theme
+
+// On dit à angular d'utiliser ce thème au travers d'une de ses mixins
+@include angular-material-theme($groupomania-theme);
