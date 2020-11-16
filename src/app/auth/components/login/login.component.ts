@@ -2,6 +2,9 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../../auth.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+// Modal
+import { MatDialog } from '@angular/material/dialog';
+import { ModalComponent } from '../../../shared/components/modal/modal.component';
 
 @Component({
   selector: 'app-login',
@@ -9,16 +12,17 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  // MODAL
-  validForm: boolean = true;
-
   // RECUPERATION ELEMENTREF
   @ViewChild('passwordToggle') passwordToggle: ElementRef;
 
   // DECLARATION FORMULAIRE
   public form: FormGroup;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private matDialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     // CREATION FORMULAIRE
@@ -57,11 +61,13 @@ export class LoginComponent implements OnInit {
         (res) => {
           this.router.navigate(['/']);
         },
-        (err) => console.log(err.status)
+        (err) => {
+          console.log(err);
+          this.matDialog.open(ModalComponent, { data: { err } });
+        }
       );
     } else {
       console.log('formulaire invalid');
-      this.validForm = false;
     }
   }
 }
