@@ -2,8 +2,12 @@
 <ng-container *ngIf="data.loginError">
   <h1 mat-dialog-title>{{ data.loginError.error }}</h1>
   <div mat-dialog-content>
-    <p>Code : {{ data.loginError.status }}</p>
-    <button (click)="closeModal()">X</button>
+    <p>
+      Veuillez réessayer ultérieurement. <br />
+      Si ce problème persiste, veuillez contacter le service des
+      <strong>Ressources Humaines.</strong>
+    </p>
+    <button mat-raised-button color="primary" (click)="closeModal()">OK</button>
   </div>
 </ng-container>
 <!-- SIGNUP ERRORS Component -->

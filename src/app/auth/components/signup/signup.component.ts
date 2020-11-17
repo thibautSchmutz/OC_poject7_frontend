@@ -6,6 +6,8 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { AuthService } from '../../auth.service';
+import { toFormData } from '../../../core/utils/formdata-builder';
 
 @Component({
   selector: 'app-signup',
@@ -19,22 +21,16 @@ export class SignupComponent implements OnInit {
   // DECLARATION FORMULAIRE
   form: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private authService: AuthService) {}
 
   ngOnInit(): void {
     // CREATION FORMULAIRE
     this.form = this.fb.group({
-      firstName: ['', [Validators.required]],
-      lastName: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
-      password: [
-        '',
-        [
-          Validators.required,
-          Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$'),
-        ],
-      ],
-      imageUrl: [''],
+      firstName: [null, [Validators.required]],
+      lastName: [null, [Validators.required]],
+      email: [null, [Validators.required, Validators.email]],
+      password: [null, [Validators.required]],
+      imageUrl: [null],
     });
   }
 
@@ -69,11 +65,39 @@ export class SignupComponent implements OnInit {
     }
   }
 
+  // IMAGE UPLOAD & READER
+  // imageUrlReader est bindé à l'attribut 'src' de l'img de preview
+  imageUrlReader: string;
+
+  onFileChange(event) {
+    // permet d'accéder à l'objet (files) du l'input de type file et de l'assigner au formControl
+    this.form.patchValue({
+      imageUrl: event.target.files[0],
+    });
+
+    //permet la lecture dans le DOM du fichier grâce à FileReader
+    const reader = new FileReader();
+    reader.readAsDataURL(event.target.files[0]);
+    reader.onload = (event: any) => {
+      this.imageUrlReader = event.target.result;
+    };
+  }
+
   // SUBMIT
-  login() {
+  signup() {
+    if (!this.form.valid) {
+      console.log(this.form);
+    }
     // ENVOI AU SERVEUR
     if (this.form.valid) {
-      console.log('envoi au serveur');
+      // Utilisatation d'un FormData pour assigner chaque type de champs (surtout pour l'image de type "file")
+      let formData: FormData = toFormData(this.form.value);
+      console.log(formData);
+
+      this.authService.signup(formData).subscribe(
+        (res) => console.log(res),
+        (err) => console.log(err)
+      );
     }
   }
 }

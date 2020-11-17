@@ -18,7 +18,6 @@ export class AuthService {
     // Si un token est présent dans le localStorage,
     // On passe la valeur "true" à isAuth$
     if (localStorage.getItem('token')) {
-      // Ajout d'appel serveur vérif' token.
       this.isAuth$.next(true);
     }
   }
@@ -36,5 +35,23 @@ export class AuthService {
           this.isAuth$.next(true);
         })
       );
+  }
+
+  signup(
+    userInfos
+  ): Observable<{
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+    imageUrl?: string;
+  }> {
+    return this.http.post<{
+      firstName: string;
+      lastName: string;
+      email: string;
+      password: string;
+      imageUrl?: string;
+    }>(`${environment.apiUrl}/users/signup`, userInfos);
   }
 }

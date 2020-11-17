@@ -28,7 +28,7 @@ form {
     letter-spacing: 0.1rem;
     text-align: center;
     margin-bottom: 1rem;
-    color: $second-font-color;
+    color: $neutral-color;
   }
 
   .form-group {
@@ -57,6 +57,16 @@ form {
 
       background-color: $base-color;
       box-shadow: $base-shadow-inset;
+
+      &.ng-invalid {
+        border-width: 1px;
+        border-left: $punchy-color solid 5px;
+      }
+
+      &.ng-valid {
+        border-width: 1px;
+        border-left: $neutral-color solid 5px;
+      }
     }
 
     input[formControlName="email"] ::placeholder {

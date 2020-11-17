@@ -1,14 +1,17 @@
-<form [formGroup]="form" (ngSubmit)="login()">
+<form [formGroup]="form" (ngSubmit)="signup()">
   <h2>Inscription</h2>
 
+  <!-- PRENOM -->
   <div class="form-group">
     <label>Prénom<span>*</span> :</label>
-    <input formGroupName="firstName" type="text" />
+    <input formControlName="firstName" type="text" />
   </div>
+  <!-- NOM -->
   <div class="form-group">
     <label>Nom<span>*</span> :</label>
-    <input formGroupName="lastName" type="text" />
+    <input formControlName="lastName" type="text" />
   </div>
+  <!-- EMAIL -->
   <div class="form-group">
     <label>Email<span>*</span> :</label>
     <input
@@ -20,6 +23,7 @@
       >Email incorrect</span
     >
   </div>
+  <!-- MOT DE PASSE -->
   <div class="form-group">
     <label>Mot de passe<span>*</span> :</label>
     <div class="password-container">
@@ -38,16 +42,19 @@
       </svg>
     </div>
   </div>
+  <!-- IMAGE LOADER -->
   <div class="image-container">
-    <label *ngIf="imageUrl.value; else empty">Image uploadée</label>
+    <!-- <label *ngIf="imageUrl.value; else empty">Image uploadée</label> -->
+    <img [src]="imageUrlReader" *ngIf="imageUrl.value; else empty" />
     <ng-template #empty>
       <label
         >Choisir une Image <br />
         <span>(optionnelle)</span></label
       >
     </ng-template>
-    <input formControlName="imageUrl" type="file" />
+    <input type="file" (change)="onFileChange($event)" />
   </div>
+  <!-- BOUTON SUBMIT -->
   <button type="submit">Confirmer</button>
   <p class="form-legend"><span>*</span> : champs obligatoires</p>
   <p class="signin-link">

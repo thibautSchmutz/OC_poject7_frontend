@@ -28,7 +28,7 @@ form {
     letter-spacing: 0.1rem;
     text-align: center;
     margin-bottom: 1rem;
-    color: $second-font-color;
+    color: $neutral-color;
   }
 
   .form-group {
@@ -61,6 +61,16 @@ form {
 
       background-color: $base-color;
       box-shadow: $base-shadow-inset;
+
+      &.ng-invalid {
+        border-width: 1px;
+        border-left: red solid 5px;
+      }
+
+      &.ng-valid {
+        border-width: 1px;
+        border-left: green solid 5px;
+      }
     }
 
     input[formControlName="email"] ::placeholder {
@@ -99,6 +109,8 @@ form {
     position: relative;
     overflow: hidden;
     text-align: center;
+    display: flex;
+    align-items: center;
 
     input {
       cursor: pointer;
@@ -119,6 +131,10 @@ form {
     span {
       font-style: italic;
       font-size: 0.8rem;
+    }
+
+    img {
+      max-height: 100px;
     }
   }
 
