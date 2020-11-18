@@ -4,12 +4,15 @@
     <h1><a routerLink="/">Groupomania</a></h1>
   </div>
   <div>
-    <ul *ngIf="isAuth$ | async; else auth">
+    <ul *ngIf="isAuth$ | async; else notauth">
+      <li>
+        <a routerLink="/user">Mon compte</a>
+      </li>
       <li>
         <a routerLink="/connect/login" (click)="logout()">Se déconnecter</a>
       </li>
     </ul>
-    <ng-template #auth>
+    <ng-template #notauth>
       <ul>
         <li routerLinkActive="active">
           <a routerLink="/connect/login">Connexion</a>
