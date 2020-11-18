@@ -1,4 +1,13 @@
+@import "../../../shared/variables";
+
 button {
   margin-top: 1rem;
   width: 100%;
+}
+
+a {
+  cursor: pointer;
+  &:hover {
+    color: $punchy-color;
+  }
 }

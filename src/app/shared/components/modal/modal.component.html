@@ -1,20 +1,41 @@
-<!-- LOGIN ERRORS Modal -->
+<!-- LOGIN ERRORS -->
 <ng-container *ngIf="data.loginError">
   <h1 mat-dialog-title>{{ data.loginError.error }}</h1>
   <div mat-dialog-content>
     <p>
-      Veuillez réessayer ultérieurement. <br />
-      Si ce problème persiste, veuillez contacter le service des
-      <strong>Ressources Humaines.</strong>
+      Vous n'avez pas encore de compte ?
+      <a (click)="signup()"><strong>Créer un compte</strong></a>
+    </p>
+    <p>
+      Si vous possédez un compte, veuillez contacter le service des Ressources
+      Humaines.
     </p>
     <button mat-raised-button color="primary" (click)="closeModal()">OK</button>
   </div>
 </ng-container>
-<!-- SIGNUP ERRORS Component -->
+<!-- SIGNUP ERRORS -->
 <ng-container *ngIf="data.signupError">
-  <h1 mat-dialog-title>Problème de Connexion</h1>
+  <h1 mat-dialog-title>{{ data.signupError.error }}</h1>
   <div mat-dialog-content>
-    <p>E-mail déjà utilisé</p>
-    <button (click)="closeModal()">X</button>
+    <p>
+      Avez-vous déjà un compte ?
+      <a (click)="login()"><strong>Se connecter</strong></a>
+    </p>
+    <p>
+      Si cet e-mail vous appartient et que vous ne possédez pas de compte,
+      veuillez contacter le service des Ressources Humaines.
+    </p>
+    <button mat-raised-button color="primary" (click)="closeModal()">OK</button>
+  </div>
+</ng-container>
+<!-- SIGNUP CONFIRM -->
+<ng-container *ngIf="data.signupConfirm">
+  <h1 mat-dialog-title>Profil créé</h1>
+  <div mat-dialog-content>
+    <p>
+      Bienvenue {{ data.signupConfirm.firstName }} ! <br />
+      Vous pouvez dès maintenant interagir avec vos collègues.
+    </p>
+    <button mat-raised-button color="primary" (click)="closeModal()">X</button>
   </div>
 </ng-container>

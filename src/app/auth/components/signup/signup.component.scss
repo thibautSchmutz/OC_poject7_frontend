@@ -69,7 +69,7 @@ form {
 
       &.ng-valid {
         border-width: 1px;
-        border-left: green solid 5px;
+        border-left: $neutral-color solid 5px;
       }
     }
 

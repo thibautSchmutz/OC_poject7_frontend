@@ -8,6 +8,10 @@ import {
 } from '@angular/forms';
 import { AuthService } from '../../auth.service';
 import { toFormData } from '../../../core/utils/formdata-builder';
+// Modal
+import { MatDialog } from '@angular/material/dialog';
+import { ModalComponent } from '../../../shared/components/modal/modal.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -21,7 +25,12 @@ export class SignupComponent implements OnInit {
   // DECLARATION FORMULAIRE
   form: FormGroup;
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {}
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private matDialog: MatDialog,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     // CREATION FORMULAIRE
@@ -47,6 +56,9 @@ export class SignupComponent implements OnInit {
   get imageUrl() {
     return this.form.get('imageUrl');
   }
+  get password() {
+    return this.form.get('password');
+  }
 
   // AFFICHER MOT DE PASSE
   showPassword(password) {
@@ -68,7 +80,6 @@ export class SignupComponent implements OnInit {
   // IMAGE UPLOAD & READER
   // imageUrlReader est bindé à l'attribut 'src' de l'img de preview
   imageUrlReader: string;
-
   onFileChange(event) {
     // permet d'accéder à l'objet (files) du l'input de type file et de l'assigner au formControl
     this.form.patchValue({
@@ -95,8 +106,28 @@ export class SignupComponent implements OnInit {
       console.log(formData);
 
       this.authService.signup(formData).subscribe(
-        (res) => console.log(res),
-        (err) => console.log(err)
+        (res) => {
+          this.authService
+            .login({ email: res.email, password: this.password.value })
+            .subscribe(
+              (res) => {
+                this.matDialog.open(ModalComponent, {
+                  data: { signupConfirm: res },
+                });
+                this.router.navigate(['/']);
+              },
+              (err) => {
+                console.log(err);
+                this.matDialog.open(ModalComponent, {
+                  data: { loginError: err },
+                });
+              }
+            );
+        },
+        (err) => {
+          console.log(err);
+          this.matDialog.open(ModalComponent, { data: { signupError: err } });
+        }
       );
     }
   }

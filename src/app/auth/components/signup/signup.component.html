@@ -44,7 +44,6 @@
   </div>
   <!-- IMAGE LOADER -->
   <div class="image-container">
-    <!-- <label *ngIf="imageUrl.value; else empty">Image uploadée</label> -->
     <img [src]="imageUrlReader" *ngIf="imageUrl.value; else empty" />
     <ng-template #empty>
       <label
