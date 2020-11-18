@@ -39,3 +39,11 @@
     <button mat-raised-button color="primary" (click)="closeModal()">X</button>
   </div>
 </ng-container>
+<!-- ADD POST -->
+<ng-container *ngIf="data.addPost">
+  <h1 mat-dialog-title>Déposer un Post</h1>
+  <div mat-dialog-content>
+    <app-post-form></app-post-form>
+    <!-- <button mat-raised-button color="primary" (click)="closeModal()">X</button> -->
+  </div>
+</ng-container>
