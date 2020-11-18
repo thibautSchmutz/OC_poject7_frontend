@@ -9,19 +9,20 @@ import { tap, map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class AuthService {
+  // USER AUTH - BS
   public isAuth$ = new BehaviorSubject<boolean>(false);
 
   constructor(
     private http: HttpClient,
     private localstorageService: LocalstorageService
   ) {
-    // Si un token est présent dans le localStorage,
-    // On passe la valeur "true" à isAuth$
+    // Si un token est présent dans le localStorage, on passe la valeur "true" à isAuth$
     if (localStorage.getItem('token')) {
       this.isAuth$.next(true);
     }
   }
 
+  // LOGIN
   login(userInfos): Observable<{ userId: string; token: string }> {
     return this.http
       .post<{ userId: string; token: string }>(
@@ -37,6 +38,7 @@ export class AuthService {
       );
   }
 
+  // SIGNUP
   signup(
     userInfos
   ): Observable<{
