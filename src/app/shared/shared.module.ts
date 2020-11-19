@@ -5,11 +5,8 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 
-// COMPONENTS
-import { ImageUploadComponent } from './components/image-upload/image-upload.component';
-
 @NgModule({
-  declarations: [ImageUploadComponent],
+  declarations: [],
   imports: [
     CommonModule,
     MatButtonModule,
@@ -17,11 +14,6 @@ import { ImageUploadComponent } from './components/image-upload/image-upload.com
     FormsModule,
     ReactiveFormsModule,
   ],
-  exports: [
-    MatButtonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    ImageUploadComponent,
-  ],
+  exports: [MatButtonModule, FormsModule, ReactiveFormsModule],
 })
 export class SharedModule {}

@@ -4,18 +4,22 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 import { QuillModule } from 'ngx-quill';
 
 // COMPONENTS
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FourOhFourComponent } from './components/four-oh-four/four-oh-four.component';
-import { AddPostComponent } from './components/add-post/add-post.component';
-import { PostFormComponent } from './components/add-post/post-form/post-form.component';
+import { SignupComponent } from './components/auth/signup/signup.component';
+import { LoginComponent } from './components/auth/login/login.component';
+import { AddPostComponent } from './components/btn-add-post/add-post.component';
+import { PostFormComponent } from './components/btn-add-post/post-form/post-form.component';
 import { ModalComponent } from './components/modal/modal.component';
+import { ImageUploadComponent } from './components/image-upload/image-upload.component';
 
 // SERVICES
 import { LocalstorageService } from './services/localstorage.service';
-import { AuthService } from '../auth/auth.service';
+import { AuthService } from './services/auth.service';
 import { PostService } from '../post/post.service';
 
 // AUTRES
@@ -26,14 +30,18 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
   declarations: [
     NavbarComponent,
     FourOhFourComponent,
+    SignupComponent,
+    LoginComponent,
     AddPostComponent,
     PostFormComponent,
     ModalComponent,
+    ImageUploadComponent,
   ],
   imports: [
     CommonModule,
     RouterModule,
     MatDialogModule,
+    MatButtonModule,
     FormsModule,
     ReactiveFormsModule,
     QuillModule.forRoot({
@@ -52,7 +60,6 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
   providers: [
     AuthService,
     PostService,
-    LocalstorageService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,

@@ -1,10 +1,10 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AuthService } from '../../auth.service';
+import { AuthService } from '../../../services/auth.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 // Modal
 import { MatDialog } from '@angular/material/dialog';
-import { ModalComponent } from '../../../core/components/modal/modal.component';
+import { ModalComponent } from '../../modal/modal.component';
 
 @Component({
   selector: 'app-login',
@@ -57,7 +57,6 @@ export class LoginComponent implements OnInit {
   // SUBMIT
   login() {
     if (this.form.valid) {
-      console.log(this.form.value);
       this.authService.login(this.form.value).subscribe(
         (res) => {
           this.router.navigate(['/']);

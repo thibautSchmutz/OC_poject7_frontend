@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { AuthService } from 'src/app/auth/auth.service';
+import { AuthService } from '../../services/auth.service';
 // Modal
 import { MatDialog } from '@angular/material/dialog';
 import { ModalComponent } from '../modal/modal.component';
@@ -22,7 +22,6 @@ export class AddPostComponent implements OnInit {
   openModal() {
     this.matDialog.open(ModalComponent, {
       data: { addPost: true },
-      width: '80vw',
     });
   }
 }

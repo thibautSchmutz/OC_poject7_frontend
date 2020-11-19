@@ -9,16 +9,16 @@
         <a routerLink="/user">Mon compte</a>
       </li>
       <li>
-        <a routerLink="/connect/login" (click)="logout()">Se déconnecter</a>
+        <a routerLink="/login" (click)="logout()">Se déconnecter</a>
       </li>
     </ul>
     <ng-template #notauth>
       <ul>
         <li routerLinkActive="active">
-          <a routerLink="/connect/login">Connexion</a>
+          <a routerLink="/login">Connexion</a>
         </li>
         <li routerLinkActive="active">
-          <a routerLink="/connect/signup">Inscription</a>
+          <a routerLink="/signup">Inscription</a>
         </li>
       </ul>
     </ng-template>

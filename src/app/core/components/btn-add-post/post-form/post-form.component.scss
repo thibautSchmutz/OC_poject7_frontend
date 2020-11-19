@@ -7,5 +7,12 @@ form {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  //   align-items: center;
+
+  button {
+    margin-top: 2rem;
+  }
+}
+
+.form-group {
+  margin-bottom: 2rem;
 }

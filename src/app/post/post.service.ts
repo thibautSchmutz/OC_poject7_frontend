@@ -13,4 +13,8 @@ export class PostService {
   getAllPosts(): Observable<Post[]> {
     return this.http.get<Post[]>(`${environment.apiUrl}/posts`);
   }
+
+  addNewPost(postInfo): Observable<Post> {
+    return this.http.post<Post>(`${environment.apiUrl}/posts/new`, postInfo);
+  }
 }

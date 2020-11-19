@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { LocalstorageService } from '../core/services/localstorage.service';
+import { LocalstorageService } from '../services/localstorage.service';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { tap, map } from 'rxjs/operators';
 
@@ -12,13 +12,14 @@ export class AuthService {
   // USER AUTH - BS
   public isAuth$ = new BehaviorSubject<boolean>(false);
 
-  constructor(
-    private http: HttpClient,
-    private localstorageService: LocalstorageService
-  ) {
+  // USER_ID
+  public user_id: string;
+
+  constructor(private http: HttpClient) {
     // Si un token est présent dans le localStorage, on passe la valeur "true" à isAuth$
     if (localStorage.getItem('token')) {
       this.isAuth$.next(true);
+      this.user_id = localStorage.getItem('userId');
     }
   }
 
@@ -31,8 +32,8 @@ export class AuthService {
       )
       .pipe(
         tap((res) => {
-          this.localstorageService.set('userId', res.userId);
-          this.localstorageService.set('token', `Bearer ${res.token}`);
+          localStorage.setItem('userId', res.userId);
+          localStorage.setItem('token', `Bearer ${res.token}`);
           this.isAuth$.next(true);
         })
       );

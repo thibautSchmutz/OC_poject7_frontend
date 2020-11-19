@@ -1,6 +1,7 @@
 @import "../../../shared/variables";
 
 :host {
+  min-width: 30vw;
   display: flex;
   flex-direction: column;
 }
@@ -19,4 +20,8 @@ a {
   &:hover {
     color: $punchy-color;
   }
+}
+
+.addpost {
+  margin-top: 1rem;
 }

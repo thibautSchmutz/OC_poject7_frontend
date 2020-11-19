@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PostService } from '../../post.service';
-import { AuthService } from '../../../auth/auth.service';
+import { AuthService } from '../../../core/services/auth.service';
 import { Post } from '../../post';
 import { Router } from '@angular/router';
 

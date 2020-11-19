@@ -7,7 +7,7 @@ import {
   Router,
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AuthService } from 'src/app/auth/auth.service';
+import { AuthService } from '../services/auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -29,7 +29,7 @@ export class IsAuthGuard implements CanActivate {
     });
 
     if (isAuth !== true) {
-      this.router.navigate(['/connect/login']);
+      this.router.navigate(['/login']);
     }
     return isAuth;
   }

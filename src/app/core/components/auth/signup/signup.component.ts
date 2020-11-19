@@ -6,11 +6,11 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { AuthService } from '../../auth.service';
-import { toFormData } from '../../../core/utils/formdata-builder';
+import { AuthService } from '../../../services/auth.service';
+import { toFormData } from '../../../utils/formdata-builder';
 // Modal
 import { MatDialog } from '@angular/material/dialog';
-import { ModalComponent } from '../../../core/components/modal/modal.component';
+import { ModalComponent } from '../../modal/modal.component';
 import { Router } from '@angular/router';
 
 @Component({
@@ -77,7 +77,7 @@ export class SignupComponent implements OnInit {
     }
   }
 
-  // IMAGE UPLOAD & READER
+  // IMAGE UPLOAD
   patchImage(e) {
     // via le component "image-upload" on récupère l'image séléctionée
     this.form.patchValue({
@@ -92,6 +92,7 @@ export class SignupComponent implements OnInit {
     }
     // ENVOI AU SERVEUR
     if (this.form.valid) {
+      console.log('signup form.value', this.form.value);
       // Utilisatation d'un FormData pour assigner chaque type de champs (surtout pour l'image de type "file")
       let formData: FormData = toFormData(this.form.value);
 
