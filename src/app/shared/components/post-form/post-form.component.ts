@@ -20,10 +20,6 @@ export class PostFormComponent implements OnInit {
     });
   }
 
-  addPost() {
-    console.log(this.form.value);
-  }
-
   // IMAGE UPLOAD & READER
   // imageUrlReader est bindé à l'attribut 'src' de l'img de preview
   imageUrlReader: string;
@@ -39,5 +35,9 @@ export class PostFormComponent implements OnInit {
     reader.onload = (event: any) => {
       this.imageUrlReader = event.target.result;
     };
+  }
+
+  addPost() {
+    console.log(this.form.value);
   }
 }

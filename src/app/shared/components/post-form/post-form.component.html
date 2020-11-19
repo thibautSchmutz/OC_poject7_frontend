@@ -1,8 +1,10 @@
 <form [formGroup]="form" (ngSubmit)="addPost()">
   <!-- CONTENT -->
   <div class="form-group">
-    <label>Contenu :</label>
-    <input formControlName="content" type="text" />
+    <quill-editor formControlName="content"></quill-editor>
+
+    <!-- <label>Contenu :</label>
+    <input formControlName="content" type="text" /> -->
   </div>
   <!-- IMAGE LOADER -->
   <div class="image-container">
@@ -18,5 +20,5 @@
     </ng-template>
     <input type="file" (change)="onFileChange($event)" />
   </div>
-  <button type="submit">Poster</button>
+  <button mat-raised-button color="primary" type="submit">Poster</button>
 </form>

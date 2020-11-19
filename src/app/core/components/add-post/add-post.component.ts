@@ -20,6 +20,9 @@ export class AddPostComponent implements OnInit {
   }
 
   openModal() {
-    this.matDialog.open(ModalComponent, { data: { addPost: true } });
+    this.matDialog.open(ModalComponent, {
+      data: { addPost: true },
+      width: '80vw',
+    });
   }
 }

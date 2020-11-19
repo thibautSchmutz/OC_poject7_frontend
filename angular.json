@@ -28,9 +28,11 @@
               {
                 "input": "src/angular-theme.scss"
               },
+              "./node_modules/quill/dist/quill.core.css",
+              "./node_modules/quill/dist/quill.snow.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": ["./node_modules/quill/dist/quill.js"]
           },
           "configurations": {
             "production": {

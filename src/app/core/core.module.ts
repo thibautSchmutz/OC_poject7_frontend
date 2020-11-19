@@ -13,6 +13,8 @@ import { AddPostComponent } from './components/add-post/add-post.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { PostService } from '../post/post.service';
 
+import { QuillModule } from 'ngx-quill';
+
 @NgModule({
   declarations: [NavbarComponent, FourOhFourComponent, AddPostComponent],
   imports: [
@@ -21,6 +23,17 @@ import { PostService } from '../post/post.service';
     MatDialogModule,
     FormsModule,
     ReactiveFormsModule,
+    QuillModule.forRoot({
+      modules: {
+        toolbar: [
+          ['bold', 'italic'], // toggled buttons
+          [{ list: 'bullet' }],
+          [{ color: ['#0d3f74', '#cf4350'] }], // dropdown with defaults from theme
+          ['link'], // link and image, video
+        ],
+      },
+      placeholder: 'Ecrivez votre post içi...',
+    }),
   ],
   exports: [NavbarComponent, FourOhFourComponent, AddPostComponent],
   providers: [

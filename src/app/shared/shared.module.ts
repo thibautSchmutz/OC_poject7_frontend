@@ -9,6 +9,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { PostFormComponent } from './components/post-form/post-form.component';
 // import { ImageUploadComponent } from './components/image-upload/image-upload.component';
 
+import { QuillModule } from 'ngx-quill';
+
 @NgModule({
   declarations: [ModalComponent, PostFormComponent],
   imports: [
@@ -17,6 +19,7 @@ import { PostFormComponent } from './components/post-form/post-form.component';
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
+    QuillModule,
   ],
   exports: [ModalComponent, MatButtonModule, FormsModule, ReactiveFormsModule],
 })
