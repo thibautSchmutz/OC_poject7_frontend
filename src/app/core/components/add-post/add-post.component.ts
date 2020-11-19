@@ -3,7 +3,7 @@ import { BehaviorSubject } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
 // Modal
 import { MatDialog } from '@angular/material/dialog';
-import { ModalComponent } from '../../../shared/components/modal/modal.component';
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-add-post',

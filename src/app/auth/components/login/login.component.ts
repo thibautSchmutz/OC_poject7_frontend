@@ -4,7 +4,7 @@ import { AuthService } from '../../auth.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 // Modal
 import { MatDialog } from '@angular/material/dialog';
-import { ModalComponent } from '../../../shared/components/modal/modal.component';
+import { ModalComponent } from '../../../core/components/modal/modal.component';
 
 @Component({
   selector: 'app-login',

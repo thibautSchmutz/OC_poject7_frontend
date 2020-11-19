@@ -18,9 +18,7 @@ export class ModalComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data
   ) {}
 
-  ngOnInit() {
-    console.log(this.data);
-  }
+  ngOnInit() {}
 
   login() {
     this.router.navigate(['/connect/login']);

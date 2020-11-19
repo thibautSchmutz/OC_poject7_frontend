@@ -1,22 +1,35 @@
+// MODULES
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { FourOhFourComponent } from './components/four-oh-four/four-oh-four.component';
-import { LocalstorageService } from './services/localstorage.service';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-import { TokenInterceptor } from './interceptors/token.interceptor';
 import { RouterModule } from '@angular/router';
-import { AuthService } from '../auth/auth.service';
-import { AddPostComponent } from './components/add-post/add-post.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
-import { PostService } from '../post/post.service';
-
 import { QuillModule } from 'ngx-quill';
 
+// COMPONENTS
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { FourOhFourComponent } from './components/four-oh-four/four-oh-four.component';
+import { AddPostComponent } from './components/add-post/add-post.component';
+import { PostFormComponent } from './components/add-post/post-form/post-form.component';
+import { ModalComponent } from './components/modal/modal.component';
+
+// SERVICES
+import { LocalstorageService } from './services/localstorage.service';
+import { AuthService } from '../auth/auth.service';
+import { PostService } from '../post/post.service';
+
+// AUTRES
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './interceptors/token.interceptor';
+
 @NgModule({
-  declarations: [NavbarComponent, FourOhFourComponent, AddPostComponent],
+  declarations: [
+    NavbarComponent,
+    FourOhFourComponent,
+    AddPostComponent,
+    PostFormComponent,
+    ModalComponent,
+  ],
   imports: [
     CommonModule,
     RouterModule,

@@ -10,7 +10,7 @@ import { AuthService } from '../../auth.service';
 import { toFormData } from '../../../core/utils/formdata-builder';
 // Modal
 import { MatDialog } from '@angular/material/dialog';
-import { ModalComponent } from '../../../shared/components/modal/modal.component';
+import { ModalComponent } from '../../../core/components/modal/modal.component';
 import { Router } from '@angular/router';
 
 @Component({
@@ -78,20 +78,11 @@ export class SignupComponent implements OnInit {
   }
 
   // IMAGE UPLOAD & READER
-  // imageUrlReader est bindé à l'attribut 'src' de l'img de preview
-  imageUrlReader: string;
-  onFileChange(event) {
-    // permet d'accéder à l'objet (files) du l'input de type file et de l'assigner au formControl
+  patchImage(e) {
+    // via le component "image-upload" on récupère l'image séléctionée
     this.form.patchValue({
-      imageUrl: event.target.files[0],
+      imageUrl: e.files[0],
     });
-
-    //permet la lecture dans le DOM du fichier grâce à FileReader
-    const reader = new FileReader();
-    reader.readAsDataURL(event.target.files[0]);
-    reader.onload = (event: any) => {
-      this.imageUrlReader = event.target.result;
-    };
   }
 
   // SUBMIT
@@ -103,7 +94,6 @@ export class SignupComponent implements OnInit {
     if (this.form.valid) {
       // Utilisatation d'un FormData pour assigner chaque type de champs (surtout pour l'image de type "file")
       let formData: FormData = toFormData(this.form.value);
-      console.log(formData);
 
       this.authService.signup(formData).subscribe(
         (res) => {

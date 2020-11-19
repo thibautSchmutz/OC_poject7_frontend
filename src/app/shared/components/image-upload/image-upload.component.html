@@ -1,5 +1,10 @@
-<div>
-  <span>Choose file</span>
-  <span>{{ file ? file.name : "or drag and drop file here" }}</span>
-  <input class="file-input" type="file" />
+<div class="image-container">
+  <img [src]="image" *ngIf="image; else empty" />
+  <ng-template #empty>
+    <label
+      >Choisir une Image <br />
+      <span>(optionnelle)</span></label
+    >
+  </ng-template>
+  <input type="file" (change)="onFileChange($event)" />
 </div>

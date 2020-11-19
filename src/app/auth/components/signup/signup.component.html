@@ -42,17 +42,8 @@
       </svg>
     </div>
   </div>
-  <!-- IMAGE LOADER -->
-  <div class="image-container">
-    <img [src]="imageUrlReader" *ngIf="imageUrl.value; else empty" />
-    <ng-template #empty>
-      <label
-        >Choisir une Image <br />
-        <span>(optionnelle)</span></label
-      >
-    </ng-template>
-    <input type="file" (change)="onFileChange($event)" />
-  </div>
+  <!-- IMAGE UPLOADER -->
+  <app-image-upload (chosenImage)="patchImage($event)"></app-image-upload>
   <!-- BOUTON SUBMIT -->
   <button type="submit">Confirmer</button>
   <p class="form-legend"><span>*</span> : champs obligatoires</p>
