@@ -1,12 +1,15 @@
 @import "../../../shared/variables";
 
-div {
+:host {
   position: absolute;
   right: 0;
   bottom: 0;
-  margin: 2rem;
+  margin-right: 5vw;
+  margin-bottom: 5vh;
   z-index: 1;
+}
 
+div {
   display: flex;
   align-items: center;
   justify-content: center;
