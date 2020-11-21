@@ -1,15 +1,35 @@
+// Mixins
+@mixin base-shadow($size, $blur, $inset) {
+  box-shadow: ($inset) (-$size) (-$size) ($blur) rgba(243, 249, 255, 1),
+    1px 1px 0px rgba(243, 249, 255, 0.05),
+    ($inset) ($size) ($size) ($blur) rgba(190, 203, 216, 1);
+  // border: 0.05rem solid $base-border;
+}
+
+@mixin second-shadow($size, $blur, $inset) {
+  box-shadow: ($inset) (-$size) (-$size) ($blur) #0b3663,
+    1px 1px 0px rgba(0, 26, 51, 0.541), ($inset) ($size) ($size) ($blur) #0f4885;
+  // border: 0.05rem solid $base-border;
+}
+
+@mixin text-shadow($size, $blur, $inset) {
+  text-shadow: ($inset) (-$size) (-$size) ($blur) rgba(243, 249, 255, 1),
+    1px 1px 0px rgba(243, 249, 255, 0.05),
+    ($inset) ($size) ($size) ($blur) rgba(190, 203, 216, 1);
+}
+
 // Dark colors
-$base-color: #e6e6e6;
-$neutral-color: #0d3f74;
+$base-color: #e1ecf7;
+$base-border: #fafdff;
+$neutral-color: #174f8a;
 $punchy-color: #cf4350;
-$base-shadow: -2px -2px 8px rgb(255, 255, 255),
-  2px 2px 7px rgba(97, 97, 97, 0.616);
-$base-shadow-inset: inset -2px -2px 3px rgba(255, 255, 255, 0.918),
-  inset 2px 2px 3px rgba(97, 97, 97, 0.863);
+$base-shadow: -7px -7px 15px #f3f9ff, 7px 7px 14px #b2bec9;
+$base-shadow-inset: inset -4.5px -4.5px 8px #f3f9ff,
+  1px 1px 0px rgba(243, 249, 255, 0.05), inset 4.5px 4.5px 8px #becbd8;
 
 // Font colors
-$base-font-color: #525252;
-$second-font-color: #2c2c2c;
+$base-font-color: #1a1b1e;
+$second-font-color: #6fa2d8;
 
 // MATERIAL_THEMES
 

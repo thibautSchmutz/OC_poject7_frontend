@@ -1,6 +1,10 @@
-<div>
+<div class="card">
+  <div class="card-header" *ngIf="canModify()">
+    <p>Je peux modifier</p>
+  </div>
+  <p class="card-content" [innerHTML]="postInfo.content"></p>
+
   <ng-container *ngIf="postInfo.imageUrl">
-    <img src="{{ postInfo.imageUrl }}" />
+    <img class="card-img" height="100px" src="{{ postInfo.imageUrl }}" />
   </ng-container>
-  <p>{{ postInfo.content }}</p>
 </div>

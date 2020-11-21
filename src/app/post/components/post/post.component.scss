@@ -1,0 +1,32 @@
+@import "../../../shared/variables";
+
+.card {
+  margin-bottom: 2rem;
+  position: relative;
+  width: 40rem;
+  height: auto;
+  padding: 3rem;
+  background-color: $base-color;
+  @include base-shadow(0.8rem, 3rem, null);
+  border: 0.05rem solid $base-border;
+  border-radius: 2rem;
+
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 2rem auto 2rem;
+  grid-template-areas:
+    "header header"
+    "content image"
+    "cta cta";
+
+  &-content {
+    padding: 2rem;
+    height: 100%;
+    width: 100%;
+    grid-area: content;
+  }
+
+  &-img {
+    grid-area: image;
+  }
+}

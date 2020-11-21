@@ -2,17 +2,34 @@
 
 :host {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  font-family: "Poppins", sans-serif;
 
   min-height: 90vh;
 
   background-color: $base-color;
 }
 
+h2 {
+  outline: none;
+  font-size: 8rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.1rem;
+  text-align: center;
+  margin-bottom: 5rem;
+  color: $base-color;
+  @include text-shadow(0.2rem, 0.2rem, null);
+}
+
 form {
+  font-family: "Poppins", sans-serif;
   background-color: $base-color;
-  box-shadow: $base-shadow;
+  @include base-shadow(0.3rem, 0.6rem, null);
   padding: 3rem;
   border-radius: 1rem;
   width: 50%;
@@ -21,22 +38,12 @@ form {
   display: flex;
   flex-direction: column;
 
-  h2 {
-    font-size: 2.3rem;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 0.1rem;
-    text-align: center;
-    margin-bottom: 1rem;
-    color: $neutral-color;
-  }
-
   .form-group {
     margin: 1rem 0;
 
     label {
       font-size: 1.1rem;
-      color: $second-font-color;
+      color: $neutral-color;
     }
 
     span {
@@ -52,25 +59,17 @@ form {
       border: none;
       outline: none;
       padding: 1rem;
-      color: $second-font-color;
+      color: $base-font-color;
       font-size: 1.1rem;
 
       background-color: $base-color;
-      box-shadow: $base-shadow-inset;
-
-      &.ng-invalid {
-        border-width: 1px;
-        border-left: $punchy-color solid 5px;
-      }
-
-      &.ng-valid {
-        border-width: 1px;
-        border-left: $neutral-color solid 5px;
-      }
+      @include base-shadow(0.3rem, 0.4rem, inset);
     }
 
-    input[formControlName="email"] ::placeholder {
+    input[formControlName="email"]::placeholder {
       color: $second-font-color;
+      font-family: "Poppins", sans-serif;
+      font-size: 0.9rem;
       font-style: italic;
     }
 
@@ -88,7 +87,7 @@ form {
       right: 1rem;
 
       path.hide-password {
-        fill: $base-font-color;
+        fill: $neutral-color;
       }
       path.show-password {
         fill: $punchy-color;
@@ -109,11 +108,11 @@ form {
     color: $punchy-color;
 
     background-color: $base-color;
-    box-shadow: $base-shadow;
+    @include base-shadow(0.3rem, 0.4rem, null);
 
     &:active {
-      color: $second-font-color;
-      box-shadow: $base-shadow-inset;
+      color: $neutral-color;
+      @include base-shadow(0.4rem, 0.8rem, inset);
     }
   }
 
@@ -123,7 +122,8 @@ form {
 
     a {
       // text-decoration: none;
-      color: $base-font-color;
+      color: $neutral-color;
+      font-weight: bold;
 
       &:hover {
         color: $punchy-color;

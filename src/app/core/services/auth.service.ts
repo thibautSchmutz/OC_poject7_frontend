@@ -15,6 +15,9 @@ export class AuthService {
   // USER_ID
   public user_id: string;
 
+  // ADMON
+  public admin: boolean = false;
+
   constructor(private http: HttpClient) {
     // Si un token est présent dans le localStorage, on passe la valeur "true" à isAuth$
     if (localStorage.getItem('token')) {

@@ -41,7 +41,6 @@
 
       a {
         color: $neutral-color;
-
         &:hover {
           color: $punchy-color;
         }
@@ -54,8 +53,8 @@
     }
 
     li {
-      box-shadow: $base-shadow;
-      padding: 10px;
+      @include base-shadow(0.2rem, 0.4rem, null);
+      padding: 1rem 2rem;
       margin-left: 20px;
       border-radius: 5px;
 
@@ -65,7 +64,7 @@
     }
 
     .active {
-      box-shadow: $base-shadow-inset;
+      @include base-shadow(0.2rem, 0.4rem, inset);
 
       a {
         color: $punchy-color;

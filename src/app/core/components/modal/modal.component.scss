@@ -1,9 +1,12 @@
 @import "../../../shared/variables";
 
 :host {
+  margin: 0;
   min-width: 30vw;
   display: flex;
   flex-direction: column;
+  background-color: $base-color;
+  padding: 0 2rem;
 }
 
 button {
@@ -12,7 +15,11 @@ button {
 }
 
 h1 {
+  margin: 3rem 0;
+  font-size: 4rem;
   text-align: center;
+  color: $base-color;
+  @include text-shadow(0.1rem, 0.1rem, null);
 }
 
 a {
@@ -20,8 +27,4 @@ a {
   &:hover {
     color: $punchy-color;
   }
-}
-
-.addpost {
-  margin-top: 1rem;
 }

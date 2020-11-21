@@ -2,15 +2,13 @@
 
 :host {
   align-self: center;
-  width: 200px;
-  height: 200px;
 }
 
 .image-container {
-  height: 100%;
+  width: 200px;
+  height: 200px;
   margin-top: 1rem;
-  padding: 2rem;
-  box-shadow: $base-shadow;
+  @include base-shadow(0.3rem, 0.4rem, null);
   border-radius: 1rem;
   position: relative;
   overflow: hidden;
@@ -42,6 +40,9 @@
   }
 
   img {
-    max-height: 100px;
+    height: 180px;
+    width: 180px;
+    object-fit: cover;
+    border-radius: 50%;
   }
 }

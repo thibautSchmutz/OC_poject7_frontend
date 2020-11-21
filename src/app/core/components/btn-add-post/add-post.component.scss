@@ -1,7 +1,7 @@
 @import "../../../shared/variables";
 
 :host {
-  position: absolute;
+  position: fixed;
   right: 0;
   bottom: 0;
   margin-right: 5vw;
@@ -14,16 +14,20 @@ div {
   align-items: center;
   justify-content: center;
 
-  width: 3.5rem;
-  height: 3.5rem;
-  background-color: $neutral-color;
-  box-shadow: $base-shadow;
-  color: $base-color;
-  font-size: 2rem;
+  width: 5rem;
+  height: 5rem;
+  color: $neutral-color;
+  font-size: 3rem;
   border-radius: 50%;
   cursor: pointer;
+  background-color: $base-color;
+  @include base-shadow(0.4rem, 0.5rem, null);
 
   &:hover {
-    background-color: $punchy-color;
+    color: $punchy-color;
+  }
+
+  &:active {
+    @include base-shadow(0.2rem, 0.4rem, inset);
   }
 }

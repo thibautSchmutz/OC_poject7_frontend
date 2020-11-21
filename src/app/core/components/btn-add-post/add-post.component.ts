@@ -22,6 +22,7 @@ export class AddPostComponent implements OnInit {
   openModal() {
     this.matDialog.open(ModalComponent, {
       data: { addPost: true },
+      panelClass: 'custom-dialog-container',
     });
   }
 }
