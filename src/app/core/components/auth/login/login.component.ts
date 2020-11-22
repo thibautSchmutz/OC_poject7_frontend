@@ -5,6 +5,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 // Modal
 import { MatDialog } from '@angular/material/dialog';
 import { ModalComponent } from '../../modal/modal.component';
+import { UserService } from 'src/app/user/user.service';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private matDialog: MatDialog
+    private matDialog: MatDialog,
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
@@ -62,6 +64,7 @@ export class LoginComponent implements OnInit {
     if (this.form.valid) {
       this.authService.login(this.form.value).subscribe(
         (res) => {
+          this.userService.getCurrentUser(res.userId);
           this.router.navigate(['/']);
         },
         (err) => {

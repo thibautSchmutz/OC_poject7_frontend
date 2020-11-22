@@ -11,6 +11,7 @@
       <li>
         <a routerLink="/login" (click)="logout()">Se déconnecter</a>
       </li>
+      <img height="30px" [src]="userImage$ | async" alt="" />
     </ul>
     <ng-template #notauth>
       <ul>
