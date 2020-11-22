@@ -18,7 +18,7 @@
       type="email"
       placeholder="exemple@groupomania.fr"
     />
-    <span *ngIf="email.hasError('email')" class="errorMessage"
+    <span *ngIf="email.invalid && email.touched" class="errorMessage"
       >Email incorrect</span
     >
   </div>
