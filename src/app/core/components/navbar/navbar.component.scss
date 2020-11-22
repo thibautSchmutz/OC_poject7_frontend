@@ -1,12 +1,14 @@
 @import "../../../shared/variables";
 
 :host {
+  position: relative;
+
   display: flex;
   justify-content: center;
   align-items: center;
 
-  height: 10vh;
-  padding: 30px;
+  height: 5rem;
+  padding: 3rem;
   width: 100vw;
 
   background-color: $base-color;
@@ -43,6 +45,42 @@
         color: $neutral-color;
         &:hover {
           color: $punchy-color;
+        }
+      }
+    }
+
+    .auth-menu-container {
+      position: relative;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        height: 3rem;
+        border-radius: 50%;
+        cursor: pointer;
+
+        &:hover {
+          scale: 1.05;
+        }
+      }
+
+      .sub-menu {
+        display: none;
+        z-index: 1;
+        position: absolute;
+        top: 4rem;
+        left: 0;
+        width: 12rem;
+        background-color: $base-color;
+
+        li {
+          margin: 0.3rem;
+
+          &:hover {
+            scale: 1.05;
+          }
         }
       }
     }

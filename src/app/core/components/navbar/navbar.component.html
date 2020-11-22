@@ -4,15 +4,17 @@
     <h1><a routerLink="/">Groupomania</a></h1>
   </div>
   <div>
-    <ul *ngIf="isAuth$ | async; else notauth">
-      <li>
-        <a routerLink="/user">Mon compte</a>
-      </li>
-      <li>
-        <a routerLink="/login" (click)="logout()">Se déconnecter</a>
-      </li>
-      <img height="30px" [src]="userImage$ | async" alt="" />
-    </ul>
+    <div class="auth-menu-container" *ngIf="isAuth$ | async; else notauth">
+      <img [src]="userImage$ | async" (click)="openSubMenu()" />
+      <ul #submenu class="sub-menu">
+        <li>
+          <a routerLink="/user">Mon compte</a>
+        </li>
+        <li>
+          <a routerLink="/login" (click)="logout()">Déconnexion</a>
+        </li>
+      </ul>
+    </div>
     <ng-template #notauth>
       <ul>
         <li routerLinkActive="active">

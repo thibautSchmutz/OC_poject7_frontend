@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { BehaviorSubject, Observable, pipe, Subject, Subscription } from 'rxjs';
 import { pluck } from 'rxjs/operators';
 import { User } from 'src/app/user/model/user';
@@ -11,6 +11,8 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
+  @ViewChild('submenu') submenu: ElementRef<HTMLInputElement>;
+
   public isAuth$: BehaviorSubject<boolean>;
   public userImage$: Observable<string>;
 
@@ -22,6 +24,14 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.isAuth$ = this.authService.isAuth$;
     this.userImage$ = this.userService.currentUser$.pipe(pluck('imageUrl'));
+  }
+
+  openSubMenu() {
+    if (this.submenu.nativeElement.style.display === 'block') {
+      this.submenu.nativeElement.style.display = 'none';
+    } else {
+      this.submenu.nativeElement.style.display = 'block';
+    }
   }
 
   logout() {
