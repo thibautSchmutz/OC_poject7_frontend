@@ -18,9 +18,9 @@ import { ModalComponent } from './components/modal/modal.component';
 import { ImageUploadComponent } from './components/image-upload/image-upload.component';
 
 // SERVICES
-import { LocalstorageService } from './services/localstorage.service';
 import { AuthService } from './services/auth.service';
 import { PostService } from '../post/post.service';
+import { UserService } from '../user/user.service';
 
 // AUTRES
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -60,6 +60,7 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
   providers: [
     AuthService,
     PostService,
+    UserService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,

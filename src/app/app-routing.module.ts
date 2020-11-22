@@ -18,6 +18,10 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () => import('./post/post.module').then((m) => m.PostModule),
   },
+  {
+    path: 'user',
+    loadChildren: () => import('./user/user.module').then((m) => m.UserModule),
+  },
   { path: '**', component: FourOhFourComponent },
 ];
 
