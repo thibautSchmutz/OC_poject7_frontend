@@ -3,26 +3,21 @@
     <img src="../../../../assets/Groupomania_Logos/Logo_seul.svg" />
     <h1><a routerLink="/">Groupomania</a></h1>
   </div>
+  <app-add-post></app-add-post>
   <div>
     <div class="auth-menu-container" *ngIf="isAuth$ | async; else notauth">
       <img [src]="userImage$ | async" (click)="openSubMenu()" />
       <ul #submenu class="sub-menu">
-        <li>
-          <a routerLink="/user">Mon compte</a>
-        </li>
-        <li>
-          <a routerLink="/login" (click)="logout()">Déconnexion</a>
-        </li>
+        <a routerLink="/user"><li>Mon compte</li></a>
+        <a routerLink="/login" (click)="logout()"><li>Déconnexion</li></a>
       </ul>
     </div>
     <ng-template #notauth>
       <ul>
-        <li routerLinkActive="active">
-          <a routerLink="/login">Connexion</a>
-        </li>
-        <li routerLinkActive="active">
-          <a routerLink="/signup">Inscription</a>
-        </li>
+        <a routerLink="/login"><li routerLinkActive="active">Connexion</li></a>
+        <a routerLink="/signup"
+          ><li routerLinkActive="active">Inscription</li></a
+        >
       </ul>
     </ng-template>
   </div>

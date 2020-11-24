@@ -15,7 +15,7 @@ export class AuthService {
   // USER_ID
   public user_id: string;
 
-  // ADMON
+  // ADMIN
   public admin: boolean = false;
 
   constructor(private http: HttpClient) {
@@ -35,6 +35,10 @@ export class AuthService {
       )
       .pipe(
         tap((res) => {
+          if (res.userId == '1') {
+            this.admin = true;
+          }
+          this.user_id = res.userId;
           localStorage.setItem('userId', res.userId);
           localStorage.setItem('token', `Bearer ${res.token}`);
           this.isAuth$.next(true);

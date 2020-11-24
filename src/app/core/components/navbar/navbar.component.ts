@@ -37,5 +37,7 @@ export class NavbarComponent implements OnInit {
   logout() {
     localStorage.clear();
     this.isAuth$.next(false);
+    this.authService.user_id = '';
+    this.authService.admin = false;
   }
 }

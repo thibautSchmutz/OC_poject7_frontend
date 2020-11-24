@@ -6,9 +6,9 @@
   justify-content: center;
   align-items: center;
 
-  font-family: "Poppins", sans-serif;
+  height: 100vh;
 
-  min-height: 90vh;
+  font-family: "Poppins", sans-serif;
 
   background-color: $base-color;
 }
@@ -29,7 +29,7 @@ h2 {
 form {
   font-family: "Poppins", sans-serif;
   background-color: $base-color;
-  @include base-shadow(0.3rem, 0.6rem, null);
+  @include base-shadow(0.2rem, 0.4rem, null);
   padding: 3rem;
   border-radius: 1rem;
   width: 50%;

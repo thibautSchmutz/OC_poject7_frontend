@@ -1,7 +1,10 @@
 @import "../../../shared/variables";
 
 :host {
-  position: relative;
+  position: fixed;
+  z-index: 1;
+
+  background-color: $lighter-color;
 
   display: flex;
   justify-content: center;
@@ -11,9 +14,10 @@
   padding: 3rem;
   width: 100vw;
 
-  background-color: $base-color;
+  box-shadow: 0 8px 6px -6px rgba(51, 51, 51, 0.274);
 
   .container {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -57,7 +61,8 @@
       align-items: center;
 
       img {
-        height: 3rem;
+        height: 3.5rem;
+        width: 3.5rem;
         border-radius: 50%;
         cursor: pointer;
 
@@ -68,18 +73,17 @@
 
       .sub-menu {
         display: none;
-        z-index: 1;
+        z-index: 2;
         position: absolute;
-        top: 4rem;
+        top: 6rem;
         left: 0;
         width: 12rem;
-        background-color: $base-color;
 
         li {
           margin: 0.3rem;
 
           &:hover {
-            scale: 1.05;
+            font-weight: bold;
           }
         }
       }
@@ -91,7 +95,7 @@
     }
 
     li {
-      @include base-shadow(0.2rem, 0.4rem, null);
+      @include base-shadow(0.1rem, 0.3rem, null);
       padding: 1rem 2rem;
       margin-left: 20px;
       border-radius: 5px;
@@ -103,10 +107,7 @@
 
     .active {
       @include base-shadow(0.2rem, 0.4rem, inset);
-
-      a {
-        color: $punchy-color;
-      }
+      color: $punchy-color;
     }
   }
 }
