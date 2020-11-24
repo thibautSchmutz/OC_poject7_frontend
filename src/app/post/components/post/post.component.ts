@@ -1,5 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalComponent } from '../../../core/components/modal/modal.component';
 
 @Component({
   selector: 'app-post',
@@ -9,10 +11,13 @@ import { AuthService } from 'src/app/core/services/auth.service';
 export class PostComponent implements OnInit {
   @Input() public postInfo;
 
-  constructor(private authService: AuthService) {}
+  public commentSectionOpened: boolean = false;
+
+  constructor(private authService: AuthService, private matDialog: MatDialog) {}
 
   ngOnInit(): void {
     console.log(this.postInfo);
+    console.log(this.authService.admin);
   }
 
   canModify(): boolean {
@@ -23,6 +28,40 @@ export class PostComponent implements OnInit {
       return true;
     } else {
       return false;
+    }
+  }
+
+  deletePost() {
+    this.matDialog.open(ModalComponent, {
+      data: { deletePost: true },
+      panelClass: 'custom-dialog-container',
+    });
+  }
+
+  addLike(el: HTMLInputElement) {
+    // TOGGLE CLICKED CSS CLASS
+    if (el.classList.contains('card-footer-cta_clicked')) {
+      el.classList.remove('card-footer-cta_clicked');
+      el.textContent = 'Aimer';
+    } else {
+      el.classList.add('card-footer-cta_clicked');
+      el.textContent = "J'aime";
+    }
+  }
+
+  openComments(el: HTMLInputElement) {
+    // TOGGLE CLICKED CSS CLASS
+    if (el.classList.contains('card-footer-cta_clicked')) {
+      el.classList.remove('card-footer-cta_clicked');
+    } else {
+      el.classList.add('card-footer-cta_clicked');
+    }
+
+    // DISPLAY COMMENT SECTION VIA NGIF DIRECTIVE
+    if (this.commentSectionOpened) {
+      this.commentSectionOpened = false;
+    } else {
+      this.commentSectionOpened = true;
     }
   }
 }

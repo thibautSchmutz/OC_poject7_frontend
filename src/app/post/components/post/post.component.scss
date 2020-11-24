@@ -3,30 +3,100 @@
 .card {
   margin-bottom: 2rem;
   position: relative;
-  width: 40rem;
+  width: 50rem;
   height: auto;
-  padding: 3rem;
   background-color: $base-color;
-  @include base-shadow(0.8rem, 3rem, null);
-  border: 0.05rem solid $base-border;
-  border-radius: 2rem;
+  @include base-shadow(0.2rem, 0.4rem, null);
+  border-radius: 1rem;
 
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  grid-template-rows: 2rem auto 2rem;
-  grid-template-areas:
-    "header header"
-    "content image"
-    "cta cta";
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
-  &-content {
-    padding: 2rem;
-    height: 100%;
-    width: 100%;
-    grid-area: content;
+  p {
+    margin: 0 0.2rem !important;
+    font-size: 1rem;
   }
 
-  &-img {
-    grid-area: image;
+  &-header {
+    background-color: $base-color;
+    border-radius: 1rem 1rem 0 0;
+    padding: 0.8rem;
+    display: flex;
+    justify-content: space-between;
+    @include base-shadow(0.2rem, 0.2rem, null);
+
+    &-creator {
+      display: flex;
+      align-items: center;
+      &-img {
+        height: 2rem;
+        width: 2rem;
+        border-radius: 50%;
+        margin-right: 1rem;
+      }
+    }
+
+    &-delete {
+      font-size: 1.5rem;
+      height: 2rem;
+      width: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      @include base-shadow(0.2rem, 0.2rem, null);
+      cursor: pointer;
+
+      &:active {
+        @include base-shadow(0.2rem, 0.2rem, inset);
+      }
+
+      p {
+        font-weight: bolder;
+        color: $punchy-color;
+      }
+    }
+  }
+
+  &-content {
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 1rem;
+    @include base-shadow(0.2rem, 0.2rem, inset);
+  }
+
+  &-footer {
+    display: flex;
+    justify-content: space-around;
+
+    &-cta {
+      padding: 0.8rem;
+      background-color: $base-color;
+      font-weight: bold;
+      width: 50%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      @include base-shadow(0.2rem, 0.2rem, null);
+      cursor: pointer;
+
+      &_clicked {
+        color: $punchy-color;
+        @include base-shadow(0.1rem, 0.1rem, inset);
+      }
+    }
+
+    &-like {
+      border-radius: 0 0 0 1rem;
+    }
+
+    &-comment {
+      border-radius: 0 0 1rem 0;
+    }
+  }
+
+  &-comments {
+    display: block;
   }
 }

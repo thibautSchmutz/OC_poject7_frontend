@@ -1,10 +1,16 @@
 // Mixins
 @mixin base-shadow($size, $blur, $inset) {
-  box-shadow: ($inset) (-$size) (-$size) ($blur) rgba(243, 249, 255, 1),
+  box-shadow: ($inset) (-$size) (-$size) ($blur) rgb(250, 253, 255),
     1px 1px 0px rgba(243, 249, 255, 0.05),
     ($inset) ($size) ($size) ($blur) rgba(190, 203, 216, 1);
-  // border: 0.05rem solid $base-border;
+  border: 0.05rem solid $base-border;
 }
+// @mixin base-shadow($size, $blur, $inset) {
+//   box-shadow: ($inset) (-$size) (-$size) ($blur) rgba(243, 249, 255, 1),
+//     1px 1px 0px rgba(243, 249, 255, 0.05),
+//     ($inset) ($size) ($size) ($blur) rgba(190, 203, 216, 1);
+//   // border: 0.05rem solid $base-border;
+// }
 
 @mixin second-shadow($size, $blur, $inset) {
   box-shadow: ($inset) (-$size) (-$size) ($blur) #0b3663,
@@ -20,6 +26,7 @@
 
 // Dark colors
 $base-color: #e1ecf7;
+$lighter-color: #ecf3fa;
 $base-border: #fafdff;
 $neutral-color: #174f8a;
 $punchy-color: #cf4350;
