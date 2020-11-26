@@ -15,6 +15,20 @@
     </div>
   </div>
 </ng-container>
+<!-- SINGUP INVALID -->
+<ng-container *ngIf="data.signupInvalid">
+  <h1 mat-dialog-title>Saisie incorrecte</h1>
+  <div mat-dialog-content>
+    <p>Veuillez réessayer en apportant les modifications nécessaires.</p>
+    <p>
+      Si le problème persiste, veuillez contacter le service des Ressources
+      Humaines.
+    </p>
+    <div class="btn-container">
+      <button (click)="closeModal()">OK</button>
+    </div>
+  </div>
+</ng-container>
 <!-- SIGNUP ERRORS -->
 <ng-container *ngIf="data.signupError">
   <h1 mat-dialog-title>{{ data.signupError.error }}</h1>

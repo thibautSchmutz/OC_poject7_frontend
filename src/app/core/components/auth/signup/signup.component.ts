@@ -94,7 +94,10 @@ export class SignupComponent implements OnInit {
   // SUBMIT
   signup() {
     if (!this.form.valid) {
-      console.log(this.form);
+      this.matDialog.open(ModalComponent, {
+        data: { signupInvalid: true },
+        panelClass: 'custom-dialog-container',
+      });
     }
     // ENVOI AU SERVEUR
     if (this.form.valid) {
