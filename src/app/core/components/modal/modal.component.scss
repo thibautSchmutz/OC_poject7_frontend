@@ -1,17 +1,12 @@
 @import "../../../shared/variables";
 
 :host {
-  margin: 0;
   min-width: 30vw;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   background-color: $base-color;
   padding: 0 2rem;
-}
-
-button {
-  margin-top: 1rem;
-  width: 100%;
 }
 
 h1 {
@@ -29,7 +24,8 @@ a {
   }
 }
 
-.btn {
+button {
+  margin-top: 1rem;
   width: 100%;
   height: 3rem;
   border-radius: 2rem;
@@ -46,4 +42,8 @@ a {
     color: $neutral-color;
     @include base-shadow(0.4rem, 0.8rem, inset);
   }
+}
+
+.btn-container {
+  margin-bottom: 2rem;
 }

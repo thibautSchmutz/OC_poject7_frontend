@@ -1,15 +1,17 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { LocalstorageService } from '../services/localstorage.service';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { tap, map } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
+import { UserService } from 'src/app/user/user.service';
+import { User } from '../../user/model/user';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  // USER AUTH - BS
+  // USER AUTH
+  // BehaviorSubject car initialisation à la valeur "false"
   public isAuth$ = new BehaviorSubject<boolean>(false);
 
   // USER_ID
@@ -18,7 +20,8 @@ export class AuthService {
   // ADMIN
   public admin: boolean = false;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private userService: UserService) {
+    // SESSION PERSIST
     // Si un token est présent dans le localStorage, on passe la valeur "true" à isAuth$
     if (localStorage.getItem('token')) {
       this.isAuth$.next(true);
@@ -27,6 +30,11 @@ export class AuthService {
   }
 
   // LOGIN
+  // Appel serveur pour authentification
+  // Vérification si c'est l'admin
+  // Stockage id + token en localstorage
+  // Passer une nouvelle valeur au stream du BS isAuth$
+  // Initialisation de la propriété urrentUser$ dans le userService
   login(userInfos): Observable<{ userId: string; token: string }> {
     return this.http
       .post<{ userId: string; token: string }>(
@@ -42,26 +50,17 @@ export class AuthService {
           localStorage.setItem('userId', res.userId);
           localStorage.setItem('token', `Bearer ${res.token}`);
           this.isAuth$.next(true);
+          this.userService.getCurrentUser(res.userId);
         })
       );
   }
 
   // SIGNUP
-  signup(
-    userInfos
-  ): Observable<{
-    firstName: string;
-    lastName: string;
-    email: string;
-    password: string;
-    imageUrl?: string;
-  }> {
-    return this.http.post<{
-      firstName: string;
-      lastName: string;
-      email: string;
-      password: string;
-      imageUrl?: string;
-    }>(`${environment.apiUrl}/users/signup`, userInfos);
+  // Appel serveur pour inscription
+  signup(userInfos): Observable<User> {
+    return this.http.post<User>(
+      `${environment.apiUrl}/users/signup`,
+      userInfos
+    );
   }
 }

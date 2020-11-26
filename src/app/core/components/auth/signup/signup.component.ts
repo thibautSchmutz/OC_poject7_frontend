@@ -110,6 +110,7 @@ export class SignupComponent implements OnInit {
               (res) => {
                 this.matDialog.open(ModalComponent, {
                   data: { signupConfirm: res },
+                  panelClass: 'custom-dialog-container',
                 });
                 this.router.navigate(['/']);
               },
@@ -117,13 +118,17 @@ export class SignupComponent implements OnInit {
                 console.log(err);
                 this.matDialog.open(ModalComponent, {
                   data: { loginError: err },
+                  panelClass: 'custom-dialog-container',
                 });
               }
             );
         },
         (err) => {
           console.log(err);
-          this.matDialog.open(ModalComponent, { data: { signupError: err } });
+          this.matDialog.open(ModalComponent, {
+            data: { signupError: err },
+            panelClass: 'custom-dialog-container',
+          });
         }
       );
     }

@@ -3,27 +3,23 @@
 :host {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-
-  height: 100vh;
+  font-family: "Poppins", sans-serif;
 
   background-color: $base-color;
 
-  padding-top: 4rem;
+  margin-bottom: 2rem;
 }
 
 h2 {
-  font-size: 2.3rem;
-  font-weight: 900;
+  padding-top: 12rem;
+  outline: none;
   font-size: 8rem;
-
+  font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: 0.1rem;
-  text-align: center;
-  margin-bottom: 5rem;
   color: $base-color;
   @include text-shadow(0.2rem, 0.2rem, null);
+  margin-bottom: 5rem;
 }
 
 form {

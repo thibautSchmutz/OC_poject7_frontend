@@ -10,7 +10,9 @@
       Si vous possédez un compte et que ce problème persiste, veuillez contacter
       le service des Ressources Humaines.
     </p>
-    <button mat-raised-button color="primary" (click)="closeModal()">OK</button>
+    <div class="btn-container">
+      <button (click)="closeModal()">OK</button>
+    </div>
   </div>
 </ng-container>
 <!-- SIGNUP ERRORS -->
@@ -25,7 +27,9 @@
       Si cet e-mail vous appartient et que vous ne possédez pas de compte,
       veuillez contacter le service des Ressources Humaines.
     </p>
-    <button mat-raised-button color="primary" (click)="closeModal()">OK</button>
+    <div class="btn-container">
+      <button (click)="closeModal()">OK</button>
+    </div>
   </div>
 </ng-container>
 <!-- SIGNUP CONFIRM -->
@@ -36,7 +40,9 @@
       Bienvenue {{ data.signupConfirm.firstName }} ! <br />
       Vous pouvez dès maintenant interagir avec vos collègues.
     </p>
-    <button mat-raised-button color="primary" (click)="closeModal()">X</button>
+    <div class="btn-container">
+      <button (click)="closeModal()">OK</button>
+    </div>
   </div>
 </ng-container>
 <!-- ADD POST -->
@@ -51,7 +57,9 @@
   <h1 mat-dialog-title>Supprimer</h1>
   <div mat-dialog-content>
     <p>Êtes-vous sûr de vouloir supprimer ce post ?</p>
+    <div class="btn-container">
+      <button>Oui</button>
+      <button>Non</button>
+    </div>
   </div>
-  <button class="btn yes">Oui</button>
-  <button class="btn no">Oui</button>
 </ng-container>
