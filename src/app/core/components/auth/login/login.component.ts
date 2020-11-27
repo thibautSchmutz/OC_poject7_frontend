@@ -61,6 +61,12 @@ export class LoginComponent implements OnInit {
 
   // SUBMIT
   login() {
+    if (!this.form.valid) {
+      this.matDialog.open(ModalComponent, {
+        data: { authFormInvalid: true },
+        panelClass: 'custom-dialog-container',
+      });
+    }
     if (this.form.valid) {
       this.authService.login(this.form.value).subscribe(
         (res) => {

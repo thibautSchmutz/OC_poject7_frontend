@@ -1,3 +1,17 @@
+<!-- AUTHFORMS INVALID -->
+<ng-container *ngIf="data.authFormInvalid">
+  <h1 mat-dialog-title>Saisie incorrecte</h1>
+  <div mat-dialog-content>
+    <p>Veuillez réessayer en apportant les modifications nécessaires.</p>
+    <p>
+      Si le problème persiste, veuillez contacter le service des Ressources
+      Humaines.
+    </p>
+    <div class="btn-container">
+      <button (click)="closeModal()">OK</button>
+    </div>
+  </div>
+</ng-container>
 <!-- LOGIN ERRORS -->
 <ng-container *ngIf="data.loginError">
   <h1 mat-dialog-title>{{ data.loginError.error }}</h1>
@@ -9,20 +23,6 @@
     <p>
       Si vous possédez un compte et que ce problème persiste, veuillez contacter
       le service des Ressources Humaines.
-    </p>
-    <div class="btn-container">
-      <button (click)="closeModal()">OK</button>
-    </div>
-  </div>
-</ng-container>
-<!-- SINGUP INVALID -->
-<ng-container *ngIf="data.signupInvalid">
-  <h1 mat-dialog-title>Saisie incorrecte</h1>
-  <div mat-dialog-content>
-    <p>Veuillez réessayer en apportant les modifications nécessaires.</p>
-    <p>
-      Si le problème persiste, veuillez contacter le service des Ressources
-      Humaines.
     </p>
     <div class="btn-container">
       <button (click)="closeModal()">OK</button>

@@ -4,11 +4,17 @@
   <div class="form-group">
     <label>Prénom<span>*</span> :</label>
     <input formControlName="firstName" type="text" />
+    <span *ngIf="firstName.invalid && firstName.touched" class="errorMessage"
+      >Veuillez saisir un prénom valide</span
+    >
   </div>
   <!-- NOM -->
   <div class="form-group">
     <label>Nom<span>*</span> :</label>
     <input formControlName="lastName" type="text" />
+    <span *ngIf="lastName.invalid && lastName.touched" class="errorMessage"
+      >Veuillez saisir un nom valide</span
+    >
   </div>
   <!-- EMAIL -->
   <div class="form-group">
@@ -19,14 +25,17 @@
       placeholder="exemple@groupomania.fr"
     />
     <span *ngIf="email.invalid && email.touched" class="errorMessage"
-      >Email incorrect</span
+      >Veuillez saisir un email valide</span
     >
   </div>
   <!-- MOT DE PASSE -->
   <div class="form-group">
     <label>Mot de passe<span>*</span> :</label>
     <div class="password-container">
-      <input #password formControlName="password" type="password" />
+      <input formControlName="password" type="password" />
+      <span *ngIf="password.invalid && password.touched" class="errorMessage"
+        >Doit contenir au moins 6 caractères</span
+      >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 576 512"

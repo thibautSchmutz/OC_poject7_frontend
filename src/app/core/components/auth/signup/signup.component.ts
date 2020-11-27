@@ -35,8 +35,8 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
     // CREATION FORMULAIRE
     this.form = this.fb.group({
-      firstName: [null, [Validators.required]],
-      lastName: [null, [Validators.required]],
+      firstName: [null, [Validators.required, Validators.minLength(2)]],
+      lastName: [null, [Validators.required, Validators.minLength(2)]],
       email: [
         null,
         [
@@ -44,7 +44,7 @@ export class SignupComponent implements OnInit {
           Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
         ],
       ],
-      password: [null, [Validators.required]],
+      password: [null, [Validators.required, Validators.minLength(6)]],
       imageUrl: [null],
     });
   }
@@ -83,7 +83,7 @@ export class SignupComponent implements OnInit {
     }
   }
 
-  // IMAGE UPLOAD
+  // PATCH IMAGE RETURNED BY IMAGEUPLOADER COMPONENT
   patchImage(e) {
     // via le component "image-upload" on récupère l'image séléctionée
     this.form.patchValue({
@@ -95,7 +95,7 @@ export class SignupComponent implements OnInit {
   signup() {
     if (!this.form.valid) {
       this.matDialog.open(ModalComponent, {
-        data: { signupInvalid: true },
+        data: { authFormInvalid: true },
         panelClass: 'custom-dialog-container',
       });
     }
