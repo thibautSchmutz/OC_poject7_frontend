@@ -28,3 +28,21 @@ div {
     @include base-shadow(0.2rem, 0.4rem, inset);
   }
 }
+
+@media screen and (max-width: 800px) {
+  div {
+    box-shadow: none;
+    background-color: $neutral-color;
+    color: $base-color;
+    border: 2px solid $base-color;
+
+    &:hover {
+      color: $base-color;
+    }
+
+    &:active {
+      background-color: $second-font-color;
+      box-shadow: none;
+    }
+  }
+}

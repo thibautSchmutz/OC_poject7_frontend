@@ -5,7 +5,9 @@
       <h1>Groupomania</h1>
     </a>
   </div>
-  <app-add-post></app-add-post>
+  <div class="add-post-container">
+    <app-add-post title="Ajouter un post"></app-add-post>
+  </div>
   <div>
     <div class="auth-menu-container" *ngIf="isAuth$ | async; else notauth">
       <img [src]="userImage$ | async" (click)="openSubMenu()" />
