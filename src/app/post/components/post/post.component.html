@@ -1,24 +1,34 @@
 <div class="card">
-  <div class="card-header">
-    <div class="card-header-creator">
-      <img
-        class="card-header-creator-img"
-        height="40px"
-        [src]="postInfo.Creator.imageUrl"
-        alt="profile-picture"
-      />
-      <p>{{ postInfo.Creator.firstName | titlecase }}</p>
-      <p>{{ postInfo.Creator.lastName | uppercase }}</p>
+  <div class="card-header-and-content">
+    <div class="card-header">
+      <div class="card-header-creator">
+        <img
+          class="card-header-creator-img"
+          height="40px"
+          [src]="postInfo.Creator.imageUrl"
+          alt="profile-picture"
+        />
+        <p>{{ postInfo.Creator.firstName | titlecase }}</p>
+        <p>{{ postInfo.Creator.lastName | uppercase }}</p>
+      </div>
+      <svg
+        (click)="deletePost()"
+        class="card-header-delete"
+        *ngIf="canModify()"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M3 6v18h18v-18h-18zm5 14c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm5 0c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm5 0c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm4-18v2h-20v-2h5.711c.9 0 1.631-1.099 1.631-2h5.315c0 .901.73 2 1.631 2h5.712z"
+        />
+      </svg>
+      <!-- <img src="../../../../assets/trash-can.svg" alt="" /> -->
     </div>
-    <div (click)="deletePost()" class="card-header-delete" *ngIf="canModify()">
-      <p>X</p>
+    <div class="card-content">
+      <p [innerHTML]="postInfo.content"></p>
+      <ng-container *ngIf="postInfo.imageUrl">
+        <img height="100px" src="{{ postInfo.imageUrl }}" />
+      </ng-container>
     </div>
-  </div>
-  <div class="card-content">
-    <p [innerHTML]="postInfo.content"></p>
-    <ng-container *ngIf="postInfo.imageUrl">
-      <img height="100px" src="{{ postInfo.imageUrl }}" />
-    </ng-container>
   </div>
   <div class="card-footer">
     <div #like class="card-footer-cta card-footer-like" (click)="addLike(like)">

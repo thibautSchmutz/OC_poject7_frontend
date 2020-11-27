@@ -22,3 +22,20 @@ h2 {
 .post-container {
   max-width: 1000px;
 }
+
+// TABLET
+@media screen and (max-width: 800px) {
+  h2 {
+    padding-top: 4rem;
+    font-size: 5rem;
+    margin-bottom: 4rem;
+  }
+}
+
+// PHONES
+@media screen and (max-width: 500px) {
+  h2 {
+    font-size: 3.5rem;
+    margin-bottom: 2rem;
+  }
+}

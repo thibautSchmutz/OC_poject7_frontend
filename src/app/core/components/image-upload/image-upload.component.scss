@@ -2,11 +2,12 @@
 
 :host {
   align-self: center;
+  font-size: 1rem;
 }
 
 .image-container {
-  width: 200px;
-  height: 200px;
+  width: 15rem;
+  height: 15rem;
   margin-top: 1rem;
   @include base-shadow(0.3rem, 0.4rem, null);
   border-radius: 1rem;

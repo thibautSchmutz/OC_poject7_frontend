@@ -37,12 +37,12 @@
       cursor: pointer;
 
       img {
-        max-height: 35px;
-        margin-right: 0.8rem;
+        max-height: 2.5rem;
       }
 
       h1 {
         margin: 0;
+        padding-left: 0.5rem;
       }
 
       a {
@@ -57,12 +57,12 @@
       position: relative;
 
       display: flex;
-      justify-content: center;
+      justify-content: flex-end;
       align-items: center;
 
       img {
-        height: 3rem;
-        width: 3rem;
+        max-height: 2.5rem;
+        max-width: 2.5rem;
         border-radius: 50%;
         cursor: pointer;
 
@@ -75,12 +75,13 @@
         display: none;
         z-index: 2;
         position: absolute;
-        top: 6rem;
+        top: 4rem;
         left: 0;
         width: 12rem;
 
         li {
           margin: 0.3rem;
+          font-size: 1rem;
 
           &:hover {
             font-weight: bold;
@@ -96,8 +97,8 @@
 
     li {
       @include base-shadow(0.1rem, 0.3rem, null);
-      padding: 1rem 2rem;
-      margin-left: 20px;
+      padding: 0.7rem 1.5rem;
+      margin-left: 1rem;
       border-radius: 5px;
 
       a:hover {
@@ -108,6 +109,35 @@
     .active {
       @include base-shadow(0.2rem, 0.4rem, inset);
       color: $punchy-color;
+    }
+  }
+}
+
+// PHONES
+@media screen and (max-width: 800px) {
+  :host {
+    bottom: 0;
+  }
+
+  .logo {
+    img {
+      height: 2.5rem;
+    }
+    h1 {
+      display: none;
+    }
+  }
+
+  .container {
+    .sub-menu {
+      top: auto !important;
+      left: auto !important;
+      right: -1rem !important;
+      bottom: 4rem !important;
+
+      li {
+        margin: 0.3rem;
+      }
     }
   }
 }
