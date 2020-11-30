@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable, Subject } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { Post } from './post';
 
 @Injectable({
@@ -9,7 +9,7 @@ import { Post } from './post';
 })
 export class PostService {
   // SUBJECT
-  public allPosts$: Subject<Post[]> = new Subject();
+  public allPosts$: BehaviorSubject<Post[]> = new BehaviorSubject([]);
 
   constructor(private http: HttpClient) {
     this.getAllPosts().subscribe(
