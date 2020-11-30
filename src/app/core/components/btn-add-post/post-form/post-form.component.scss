@@ -38,4 +38,15 @@ button {
     color: $neutral-color;
     @include base-shadow(0.4rem, 0.8rem, inset);
   }
+
+  &:disabled {
+    color: grey;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .form-group {
+    font-size: 0.7rem;
+    margin-right: 0;
+  }
 }

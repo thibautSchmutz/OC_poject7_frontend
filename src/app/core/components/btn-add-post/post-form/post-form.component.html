@@ -1,10 +1,10 @@
 <form [formGroup]="form" (ngSubmit)="addPost()">
   <!-- CONTENT -->
   <div class="form-group">
-    <quill-editor formControlName="content"></quill-editor>
+    <quill-editor #text formControlName="content"></quill-editor>
   </div>
   <!-- IMAGE LOADER -->
   <!-- A intégrer -->
   <app-image-upload (chosenImage)="patchImage($event)"></app-image-upload>
-  <button type="submit">Poster</button>
+  <button [disabled]="form.value.content === null" type="submit">Poster</button>
 </form>

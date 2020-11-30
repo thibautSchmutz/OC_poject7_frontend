@@ -1,10 +1,15 @@
 // Mixins
 @mixin base-shadow($size, $blur, $inset) {
-  box-shadow: ($inset) (-$size) (-$size) ($blur) rgb(250, 253, 255),
-    1px 1px 0px rgba(243, 249, 255, 0.05),
-    ($inset) ($size) ($size) ($blur) rgba(190, 203, 216, 1);
+  box-shadow: ($inset) (-$size) (-$size) ($blur) #ffffff,
+    ($inset) ($size) ($size) ($blur) #c6cdd8;
   border: 0.05rem solid $base-border;
 }
+// @mixin base-shadow($size, $blur, $inset) {
+//   box-shadow: ($inset) (-$size) (-$size) ($blur) rgb(250, 253, 255),
+//     1px 1px 0px rgba(243, 249, 255, 0.05),
+//     ($inset) ($size) ($size) ($blur) rgba(190, 203, 216, 1);
+//   border: 0.05rem solid $base-border;
+// }
 // @mixin base-shadow($size, $blur, $inset) {
 //   box-shadow: ($inset) (-$size) (-$size) ($blur) rgba(243, 249, 255, 1),
 //     1px 1px 0px rgba(243, 249, 255, 0.05),
@@ -19,16 +24,22 @@
 }
 
 @mixin text-shadow($size, $blur, $inset) {
-  text-shadow: ($inset) (-$size) (-$size) ($blur) rgba(243, 249, 255, 1),
-    1px 1px 0px rgba(243, 249, 255, 0.05),
-    ($inset) ($size) ($size) ($blur) rgba(190, 203, 216, 1);
+  text-shadow: ($inset) (-$size) (-$size) ($blur) #ffffff,
+    ($inset) ($size) ($size) ($blur) #bec5d1;
 }
+// @mixin text-shadow($size, $blur, $inset) {
+//   text-shadow: ($inset) (-$size) (-$size) ($blur) rgba(243, 249, 255, 1),
+//     1px 1px 0px rgba(243, 249, 255, 0.05),
+//     ($inset) ($size) ($size) ($blur) rgba(190, 203, 216, 1);
+// }
 
 // Dark colors
-$base-color: #e1ecf7;
-$lighter-color: #ecf3fa;
+$base-color: #ecf0f3;
+// $base-color: #e1ecf7;
+$lighter-color: #ecf0f3;
 $base-border: #fafdff;
 $neutral-color: #174f8a;
+$neutral-color-2: #092f58;
 $punchy-color: #cf4350;
 $base-shadow: -7px -7px 15px #f3f9ff, 7px 7px 14px #b2bec9;
 $base-shadow-inset: inset -4.5px -4.5px 8px #f3f9ff,

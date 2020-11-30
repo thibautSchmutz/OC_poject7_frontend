@@ -54,10 +54,14 @@ body {
   overflow-x: hidden;
 }
 
-// MODAL - Retirer le padding
+// MODAL
 .custom-dialog-container .mat-dialog-container {
   padding: 0;
   border-radius: 1.5rem;
+}
+
+.mat-dialog-content {
+  max-height: 100vh !important;
 }
 
 // LAPTOPS

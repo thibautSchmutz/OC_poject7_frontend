@@ -10,9 +10,8 @@ import { toFormData } from '../../../utils/formdata-builder';
   styleUrls: ['./post-form.component.scss'],
 })
 export class PostFormComponent implements OnInit {
-  @Output() public closeModal: EventEmitter<boolean> = new EventEmitter<
-    boolean
-  >();
+  @Output()
+  public closeModal: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   // DECLARATION FORMULAIRE
   form: FormGroup;
@@ -47,18 +46,18 @@ export class PostFormComponent implements OnInit {
   // EMIT TO CLOSE MODAL
 
   addPost() {
-    console.log(this.form.value);
+    if (this.form.value.content !== null) {
+      // Utilisatation d'un FormData pour assigner chaque type de champs (surtout pour l'image de type "file")
+      let formData: FormData = toFormData(this.form.value);
 
-    // Utilisatation d'un FormData pour assigner chaque type de champs (surtout pour l'image de type "file")
-    let formData: FormData = toFormData(this.form.value);
+      // EMIT POUR FERMER LA MODAL
+      this.closeModal.emit(true);
 
-    // EMIT POUR FERMER LA MODAL
-    this.closeModal.emit(true);
-
-    // ENVOYER FORMULAIRE AU SERVEUR VIA POST SERVICE
-    this.postService.addNewPost(formData).subscribe(
-      (res) => console.log(res),
-      (err) => console.log(err)
-    );
+      // ENVOYER FORMULAIRE AU SERVEUR VIA POST SERVICE
+      this.postService.addNewPost(formData).subscribe(
+        (res) => console.log(res),
+        (err) => console.log(err)
+      );
+    }
   }
 }

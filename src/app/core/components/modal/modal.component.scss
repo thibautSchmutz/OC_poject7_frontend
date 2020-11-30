@@ -1,12 +1,14 @@
 @import "../../../shared/variables";
 
 :host {
-  min-width: 30vw;
+  width: 70vw;
+  max-width: 1000px;
   padding: 2rem;
   display: flex;
   flex-direction: column;
   background-color: $base-color;
   padding: 0 2rem;
+  overflow-x: hidden;
 }
 
 h1 {
@@ -14,7 +16,6 @@ h1 {
   font-size: 2.5rem;
   text-align: center;
   color: $neutral-color;
-  // @include text-shadow(0.2rem, 0.2rem, null);
 }
 
 div[mat-dialog-content] {
@@ -50,4 +51,19 @@ button {
 
 .btn-container {
   margin-bottom: 2rem;
+}
+
+@media screen and (max-width: 800px) {
+  :host {
+    min-width: 80vw;
+    min-height: 80vh;
+    max-height: 90vh;
+  }
+  h1 {
+    margin: 2rem 0;
+    font-size: 1.7rem;
+  }
+  div[mat-dialog-content] {
+    font-size: 1rem;
+  }
 }
