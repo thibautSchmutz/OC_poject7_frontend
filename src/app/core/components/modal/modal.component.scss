@@ -37,6 +37,8 @@ button {
   border: none;
   outline: none;
 
+  justify-self: self-end;
+
   font-size: 1.2rem;
   color: $punchy-color;
 
@@ -56,7 +58,6 @@ button {
 @media screen and (max-width: 800px) {
   :host {
     min-width: 80vw;
-    min-height: 80vh;
     max-height: 90vh;
   }
   h1 {
