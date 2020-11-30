@@ -55,7 +55,9 @@ export class PostFormComponent implements OnInit {
 
       // ENVOYER FORMULAIRE AU SERVEUR VIA POST SERVICE
       this.postService.addNewPost(formData).subscribe(
-        (res) => console.log(res),
+        (res) => {
+          this.postService.updatePostState();
+        },
         (err) => console.log(err)
       );
     }

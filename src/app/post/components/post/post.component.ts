@@ -15,10 +15,7 @@ export class PostComponent implements OnInit {
 
   constructor(private authService: AuthService, private matDialog: MatDialog) {}
 
-  ngOnInit(): void {
-    console.log(this.postInfo);
-    console.log(this.authService.admin);
-  }
+  ngOnInit(): void {}
 
   canModify(): boolean {
     if (
@@ -31,9 +28,9 @@ export class PostComponent implements OnInit {
     }
   }
 
-  deletePost() {
+  ModalDeletePost() {
     this.matDialog.open(ModalComponent, {
-      data: { deletePost: true },
+      data: { deletePost: true, postId: this.postInfo.id },
       panelClass: 'custom-dialog-container',
     });
   }

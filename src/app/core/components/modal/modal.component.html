@@ -8,7 +8,7 @@
       Humaines.
     </p>
     <div class="btn-container">
-      <button (click)="closeModal()">OK</button>
+      <button class="primary-btn" (click)="closeModal()">OK</button>
     </div>
   </div>
 </ng-container>
@@ -25,7 +25,7 @@
       le service des Ressources Humaines.
     </p>
     <div class="btn-container">
-      <button (click)="closeModal()">OK</button>
+      <button class="primary-btn" (click)="closeModal()">OK</button>
     </div>
   </div>
 </ng-container>
@@ -42,7 +42,7 @@
       veuillez contacter le service des Ressources Humaines.
     </p>
     <div class="btn-container">
-      <button (click)="closeModal()">OK</button>
+      <button class="primary-btn" (click)="closeModal()">OK</button>
     </div>
   </div>
 </ng-container>
@@ -55,7 +55,7 @@
       Vous pouvez dès maintenant interagir avec vos collègues.
     </p>
     <div class="btn-container">
-      <button (click)="closeModal()">OK</button>
+      <button class="primary-btn" (click)="closeModal()">OK</button>
     </div>
   </div>
 </ng-container>
@@ -72,8 +72,8 @@
   <div mat-dialog-content>
     <p>Êtes-vous sûr de vouloir supprimer ce post ?</p>
     <div class="btn-container">
-      <button>Oui</button>
-      <button>Non</button>
+      <button class="secondary-btn" (click)="closeModal()">Non</button>
+      <button class="primary-btn" (click)="deletePost()">Oui</button>
     </div>
   </div>
 </ng-container>

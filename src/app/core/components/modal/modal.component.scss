@@ -29,30 +29,45 @@ a {
   }
 }
 
-button {
-  margin-top: 1rem;
-  width: 100%;
-  height: 3rem;
-  border-radius: 2rem;
-  border: none;
-  outline: none;
-
-  justify-self: self-end;
-
-  font-size: 1.2rem;
-  color: $punchy-color;
-
-  background-color: $base-color;
-  @include base-shadow(0.3rem, 0.4rem, null);
-
-  &:active {
-    color: $neutral-color;
-    @include base-shadow(0.4rem, 0.8rem, inset);
-  }
-}
-
 .btn-container {
   margin-bottom: 2rem;
+
+  button {
+    margin-top: 1rem;
+    width: 100%;
+    height: 3rem;
+    border-radius: 2rem;
+    border: none;
+    outline: none;
+
+    justify-self: self-end;
+
+    font-size: 1.2rem;
+
+    @include base-shadow(0.3rem, 0.4rem, null);
+
+    &:active {
+      @include base-shadow(0.4rem, 0.8rem, inset);
+    }
+  }
+
+  button.primary-btn {
+    background-color: $base-color;
+    color: $punchy-color;
+
+    &:active {
+      color: $neutral-color;
+    }
+  }
+
+  button.secondary-btn {
+    background-color: $base-color;
+    color: black;
+
+    &:active {
+      color: $neutral-color;
+    }
+  }
 }
 
 @media screen and (max-width: 800px) {

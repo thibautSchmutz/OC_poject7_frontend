@@ -1,14 +1,22 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable, Subject } from 'rxjs';
 import { Post } from './post';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PostService {
-  constructor(private http: HttpClient) {}
+  // SUBJECT
+  public allPosts$: Subject<Post[]> = new Subject();
+
+  constructor(private http: HttpClient) {
+    this.getAllPosts().subscribe(
+      (res) => this.allPosts$.next(res),
+      (err) => console.log(err)
+    );
+  }
 
   getAllPosts(): Observable<Post[]> {
     return this.http.get<Post[]>(`${environment.apiUrl}/posts`);
@@ -16,5 +24,16 @@ export class PostService {
 
   addNewPost(postInfo): Observable<Post> {
     return this.http.post<Post>(`${environment.apiUrl}/posts/new`, postInfo);
+  }
+
+  deletePost(postId: number) {
+    return this.http.delete(
+      `${environment.apiUrl}/posts/delete/${postId.toString()}`
+    );
+  }
+
+  // STATE MANAGEMENT
+  updatePostState() {
+    this.getAllPosts().subscribe((posts) => this.allPosts$.next(posts));
   }
 }
