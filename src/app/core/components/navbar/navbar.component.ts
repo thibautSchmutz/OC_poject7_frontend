@@ -14,7 +14,7 @@ export class NavbarComponent implements OnInit {
   @ViewChild('submenu') submenu: ElementRef<HTMLInputElement>;
 
   public isAuth$: BehaviorSubject<boolean>;
-  // public userImage$: Observable<string>;
+  public userImage: string;
 
   constructor(
     private authService: AuthService,
@@ -27,6 +27,8 @@ export class NavbarComponent implements OnInit {
     // if (this.userService.currentUser) {
     //   this.getUserImage();
     // }
+
+    this.userImage = this.userService.currentUser.imageUrl;
   }
 
   getUserImage() {

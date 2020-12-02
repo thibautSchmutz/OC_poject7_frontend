@@ -9,9 +9,17 @@ import { User } from './model/user';
   providedIn: 'root',
 })
 export class UserService {
+  // CURRENT USER
   public currentUser: User;
+  // ADMIN
+  public admin: boolean = false;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    // Initialisation pour éviter les problèmes de loading (asynchrone)
+    this.currentUser = {
+      imageUrl: '',
+    };
+  }
 
   getCurrentUser(userId: string) {
     this.http

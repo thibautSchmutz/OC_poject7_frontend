@@ -11,14 +11,7 @@ import { User } from '../../user/model/user';
 })
 export class AuthService {
   // USER AUTH
-  // BehaviorSubject car initialisation à la valeur "false"
   public isAuth$ = new BehaviorSubject<boolean>(false);
-
-  // USER_ID
-  // public user_id: string;
-
-  // ADMIN
-  public admin: boolean = false;
 
   constructor(private http: HttpClient, private userService: UserService) {
     // SESSION PERSIST
@@ -26,7 +19,6 @@ export class AuthService {
     if (localStorage.getItem('token')) {
       this.isAuth$.next(true);
       this.userService.getCurrentUser(localStorage.getItem('userId'));
-      // this.user_id = localStorage.getItem('userId');
     }
   }
 
@@ -40,7 +32,7 @@ export class AuthService {
       .pipe(
         tap((res) => {
           if (res.userId == '1') {
-            this.admin = true;
+            this.userService.admin = true;
           }
           // this.user_id = res.userId;
           localStorage.setItem('userId', res.userId);
@@ -64,6 +56,6 @@ export class AuthService {
     this.isAuth$.next(false);
     localStorage.clear();
     this.userService.clearCurrentUser();
-    this.admin = false;
+    this.userService.admin = false;
   }
 }
