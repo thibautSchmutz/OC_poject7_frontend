@@ -29,7 +29,7 @@ export class PostComponent implements OnInit {
   canModify(): boolean {
     if (
       this.postInfo.user_id == this.userService.currentUser.id.toString() ||
-      this.userService.admin
+      this.userService.currentUser.id.toString() === '1'
     ) {
       return true;
     } else {

@@ -25,7 +25,8 @@
       </div>
     </div>
     <div class="card-content">
-      <p [innerHTML]="postInfo.content"></p>
+      <p class="card-content-text" [innerHTML]="postInfo.content"></p>
+      <p class="card-content-date">{{ postInfo.updatedAt | date }}</p>
       <ng-container *ngIf="postInfo.imageUrl">
         <img height="100px" src="{{ postInfo.imageUrl }}" />
       </ng-container>
