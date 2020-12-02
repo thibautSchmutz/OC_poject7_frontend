@@ -1,25 +1,33 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Post } from './post';
+import { AuthService } from '../core/services/auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PostService {
   // SUBJECT
-  public allPosts$: BehaviorSubject<Post[]> = new BehaviorSubject([]);
+  private allPosts$: BehaviorSubject<Post[]> = new BehaviorSubject([]);
+  public allPosts = this.allPosts$.asObservable();
 
-  constructor(private http: HttpClient) {
-    this.getAllPosts().subscribe(
-      (res) => this.allPosts$.next(res),
-      (err) => console.log(err)
-    );
+  constructor(private http: HttpClient, private authService: AuthService) {
+    this.updateAllPostsState();
   }
 
   getAllPosts(): Observable<Post[]> {
     return this.http.get<Post[]>(`${environment.apiUrl}/posts`);
+  }
+
+  updateAllPostsState() {
+    this.getAllPosts().subscribe(
+      (res) => {
+        this.allPosts$.next(res);
+      },
+      (err) => console.log(err)
+    );
   }
 
   addNewPost(postInfo): Observable<Post> {
@@ -29,6 +37,21 @@ export class PostService {
   deletePost(postId: number) {
     return this.http.delete(
       `${environment.apiUrl}/posts/delete/${postId.toString()}`
+    );
+  }
+
+  addLike(postId, userId) {
+    return this.http.post(
+      `${environment.apiUrl}/likes/${postId.toString()}/${userId}/new`,
+      null,
+      { responseType: 'text' }
+    );
+  }
+
+  removeLike(postId: number, userId) {
+    return this.http.delete(
+      `${environment.apiUrl}/likes/${postId.toString()}/${userId}/delete`,
+      { responseType: 'text' }
     );
   }
 

@@ -10,7 +10,11 @@
   </div>
   <div>
     <div class="auth-menu-container" *ngIf="isAuth$ | async; else notauth">
-      <img [src]="userImage$ | async" (click)="openSubMenu()" />
+      <img
+        *ngIf="getUserImage()"
+        [src]="getUserImage()"
+        (click)="openSubMenu()"
+      />
       <ul #submenu class="sub-menu">
         <a routerLink="/user"><li>Mon compte</li></a>
         <a routerLink="/login" (click)="logout()"><li>Déconnexion</li></a>

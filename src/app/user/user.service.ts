@@ -9,22 +9,17 @@ import { User } from './model/user';
   providedIn: 'root',
 })
 export class UserService {
-  public currentUser$ = new Subject<User>();
+  public currentUser: User;
 
-  constructor(private http: HttpClient) {
-    const userId = localStorage.getItem('userId');
-    if (userId) {
-      this.getCurrentUser(userId);
-    } else {
-      this.currentUser$.next({
-        imageUrl: `${environment.Url}/images/Photo-profil-générique.png1605702446100.png`,
-      });
-    }
-  }
+  constructor(private http: HttpClient) {}
 
   getCurrentUser(userId: string) {
     this.http
       .get<User>(`${environment.apiUrl}/users/${userId}`)
-      .subscribe((user) => this.currentUser$.next(user));
+      .subscribe((user) => (this.currentUser = user));
+  }
+
+  clearCurrentUser() {
+    this.currentUser = {};
   }
 }

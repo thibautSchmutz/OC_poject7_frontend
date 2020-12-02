@@ -74,8 +74,10 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/']);
         },
         (err) => {
-          console.log(err);
-          this.matDialog.open(ModalComponent, { data: { loginError: err } });
+          this.matDialog.open(ModalComponent, {
+            data: { loginError: err },
+            panelClass: 'custom-dialog-container',
+          });
         }
       );
     } else {

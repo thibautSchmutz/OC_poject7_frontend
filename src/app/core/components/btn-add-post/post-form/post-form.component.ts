@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { PostService } from 'src/app/post/post.service';
+import { UserService } from 'src/app/user/user.service';
 import { toFormData } from '../../../utils/formdata-builder';
 
 @Component({
@@ -19,7 +20,8 @@ export class PostFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private postService: PostService
+    private postService: PostService,
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
@@ -31,7 +33,7 @@ export class PostFormComponent implements OnInit {
     });
 
     this.form.patchValue({
-      user_id: this.authService.user_id,
+      user_id: this.userService.currentUser.id,
     });
   }
 
@@ -42,8 +44,6 @@ export class PostFormComponent implements OnInit {
       imageUrl: e.files[0],
     });
   }
-
-  // EMIT TO CLOSE MODAL
 
   addPost() {
     if (this.form.value.content !== null) {

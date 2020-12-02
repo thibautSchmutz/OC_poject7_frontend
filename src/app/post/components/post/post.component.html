@@ -5,11 +5,11 @@
         <img
           class="card-header-creator-img"
           height="40px"
-          [src]="postInfo.Creator.imageUrl"
+          [src]="postInfo.creator.imageUrl"
           alt="profile-picture"
         />
-        <p>{{ postInfo.Creator.firstName | titlecase }}</p>
-        <p>{{ postInfo.Creator.lastName | uppercase }}</p>
+        <p>{{ postInfo.creator.firstName | titlecase }}</p>
+        <p>{{ postInfo.creator.lastName | uppercase }}</p>
       </div>
       <div
         *ngIf="canModify()"
@@ -24,7 +24,6 @@
         </svg>
       </div>
     </div>
-    <!-- <hr class="card-divider" /> -->
     <div class="card-content">
       <p [innerHTML]="postInfo.content"></p>
       <ng-container *ngIf="postInfo.imageUrl">
@@ -33,7 +32,12 @@
     </div>
   </div>
   <div class="card-footer">
-    <div #like class="card-footer-cta card-footer-like" (click)="addLike(like)">
+    <div
+      #like
+      class="card-footer-cta card-footer-like"
+      (click)="toggleLike(like)"
+      [ngClass]="{ 'card-footer-cta_clicked': addLikeUI() }"
+    >
       Aimer
     </div>
     <div
@@ -41,7 +45,7 @@
       class="card-footer-cta card-footer-comment"
       (click)="openComments(comments)"
     >
-      Commentaires({{ postInfo.Comments.length }})
+      Commentaires
     </div>
   </div>
   <div *ngIf="commentSectionOpened" class="card-comments">

@@ -4,7 +4,7 @@ export interface User {
   lastName?: string;
   email?: string;
   password?: string;
-  imageUrl: string;
+  imageUrl?: string;
   createdAt?: Date;
   updatedAt?: Date;
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { UserService } from 'src/app/user/user.service';
 import { User } from '../../user/model/user';
@@ -15,7 +15,7 @@ export class AuthService {
   public isAuth$ = new BehaviorSubject<boolean>(false);
 
   // USER_ID
-  public user_id: string;
+  // public user_id: string;
 
   // ADMIN
   public admin: boolean = false;
@@ -25,16 +25,12 @@ export class AuthService {
     // Si un token est présent dans le localStorage, on passe la valeur "true" à isAuth$
     if (localStorage.getItem('token')) {
       this.isAuth$.next(true);
-      this.user_id = localStorage.getItem('userId');
+      this.userService.getCurrentUser(localStorage.getItem('userId'));
+      // this.user_id = localStorage.getItem('userId');
     }
   }
 
   // LOGIN
-  // Appel serveur pour authentification
-  // Vérification si c'est l'admin
-  // Stockage id + token en localstorage
-  // Passer une nouvelle valeur au stream du BS isAuth$
-  // Initialisation de la propriété urrentUser$ dans le userService
   login(userInfos): Observable<{ userId: string; token: string }> {
     return this.http
       .post<{ userId: string; token: string }>(
@@ -46,21 +42,28 @@ export class AuthService {
           if (res.userId == '1') {
             this.admin = true;
           }
-          this.user_id = res.userId;
+          // this.user_id = res.userId;
           localStorage.setItem('userId', res.userId);
           localStorage.setItem('token', `Bearer ${res.token}`);
-          this.isAuth$.next(true);
           this.userService.getCurrentUser(res.userId);
+          this.isAuth$.next(true);
         })
       );
   }
 
   // SIGNUP
-  // Appel serveur pour inscription
   signup(userInfos): Observable<User> {
     return this.http.post<User>(
       `${environment.apiUrl}/users/signup`,
       userInfos
     );
+  }
+
+  // LOGOUT
+  logout() {
+    this.isAuth$.next(false);
+    localStorage.clear();
+    this.userService.clearCurrentUser();
+    this.admin = false;
   }
 }

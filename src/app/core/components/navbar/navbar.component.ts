@@ -14,7 +14,7 @@ export class NavbarComponent implements OnInit {
   @ViewChild('submenu') submenu: ElementRef<HTMLInputElement>;
 
   public isAuth$: BehaviorSubject<boolean>;
-  public userImage$: Observable<string>;
+  // public userImage$: Observable<string>;
 
   constructor(
     private authService: AuthService,
@@ -23,7 +23,14 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.isAuth$ = this.authService.isAuth$;
-    this.userImage$ = this.userService.currentUser$.pipe(pluck('imageUrl'));
+    // this.userImage$ = this.userService.currentUser.pipe(pluck('imageUrl'));
+    // if (this.userService.currentUser) {
+    //   this.getUserImage();
+    // }
+  }
+
+  getUserImage() {
+    return this.userService.currentUser.imageUrl;
   }
 
   openSubMenu() {
@@ -35,9 +42,6 @@ export class NavbarComponent implements OnInit {
   }
 
   logout() {
-    localStorage.clear();
-    this.isAuth$.next(false);
-    this.authService.user_id = '';
-    this.authService.admin = false;
+    this.authService.logout();
   }
 }
