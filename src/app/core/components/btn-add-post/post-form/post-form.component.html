@@ -4,7 +4,6 @@
     <quill-editor #text formControlName="content"></quill-editor>
   </div>
   <!-- IMAGE LOADER -->
-  <!-- A intégrer -->
   <app-image-upload (chosenImage)="patchImage($event)"></app-image-upload>
   <button [disabled]="form.value.content === null" type="submit">Poster</button>
 </form>

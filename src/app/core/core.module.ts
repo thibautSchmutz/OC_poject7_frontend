@@ -48,8 +48,6 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
       modules: {
         toolbar: [
           ['bold', 'italic'], // toggled buttons
-          [{ list: 'bullet' }],
-          [{ color: ['#0d3f74', '#cf4350'] }], // dropdown with defaults from theme
           ['link'], // link and image, video
         ],
       },

@@ -56,8 +56,9 @@ body {
 
 // MODAL
 .custom-dialog-container .mat-dialog-container {
-  padding: 0;
+  padding: 1rem;
   border-radius: 1.5rem;
+  background-color: $base-color;
 }
 
 // LAPTOPS
