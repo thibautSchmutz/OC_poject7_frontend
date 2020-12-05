@@ -76,13 +76,15 @@
         z-index: 2;
         position: absolute;
         top: 4rem;
-        left: 0;
+        right: -50%;
         width: 12rem;
 
         li {
           box-shadow: none;
           margin: 0.3rem;
           font-size: 1rem;
+          background-color: $neutral-color-2;
+          color: $base-color;
 
           &:hover {
             font-weight: bold;
@@ -136,14 +138,12 @@
       top: auto !important;
       left: auto !important;
       right: -1rem !important;
-      bottom: 4rem !important;
+      bottom: 6rem !important;
 
       li {
-        // background-color: rgb(20, 20, 20);
         background-color: $neutral-color-2;
         color: $base-color;
 
-        // border: 1px solid rgb(20, 20, 20);
         margin: 0.3rem;
       }
     }
@@ -151,9 +151,9 @@
     .add-post-container {
       position: absolute;
       scale: 1;
-      transform: scale(1.7);
-      -webkit-transform: scale(1.7);
-      top: -10%;
+      transform: scale(1.5);
+      -webkit-transform: scale(1.5);
+      top: -33%;
       left: 50%;
     }
   }

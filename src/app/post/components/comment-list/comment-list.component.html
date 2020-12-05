@@ -1,0 +1,7 @@
+<div class="comment-container" *ngFor="let comment of commentList">
+  <app-comment [commentInfo]="comment"></app-comment>
+</div>
+<app-add-comment
+  (transferComment)="addComment($event)"
+  [postId]="postId"
+></app-add-comment>

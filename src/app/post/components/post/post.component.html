@@ -8,8 +8,10 @@
           [src]="postInfo.creator.imageUrl"
           alt="profile-picture"
         />
-        <p>{{ postInfo.creator.firstName | titlecase }}</p>
-        <p>{{ postInfo.creator.lastName | uppercase }}</p>
+        <p>
+          {{ postInfo.creator.firstName | titlecase }}
+          {{ postInfo.creator.lastName | uppercase }}
+        </p>
       </div>
       <div
         *ngIf="canModify()"
@@ -50,6 +52,10 @@
     </div>
   </div>
   <div *ngIf="commentSectionOpened" class="card-comments">
-    <p>Je suis la section des commentaires</p>
+    <app-comment-list
+      (transferComment)="addComment($event)"
+      [commentList]="postInfo.comments"
+      [postId]="postInfo.id"
+    ></app-comment-list>
   </div>
 </div>

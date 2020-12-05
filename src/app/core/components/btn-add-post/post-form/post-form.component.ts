@@ -1,6 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from 'src/app/core/services/auth.service';
 import { PostService } from 'src/app/post/post.service';
 import { UserService } from 'src/app/user/user.service';
 import { toFormData } from '../../../utils/formdata-builder';
@@ -19,7 +18,6 @@ export class PostFormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private authService: AuthService,
     private postService: PostService,
     private userService: UserService
   ) {}

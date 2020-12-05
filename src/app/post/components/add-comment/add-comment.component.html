@@ -1,0 +1,9 @@
+<form [formGroup]="form" (ngSubmit)="addComment()">
+  <!-- CONTENT -->
+  <div class="form-group">
+    <textarea formControlName="content"></textarea>
+  </div>
+  <button [disabled]="form.value.content === null" type="submit">
+    Ajouter
+  </button>
+</form>

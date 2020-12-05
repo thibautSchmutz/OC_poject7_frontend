@@ -22,9 +22,7 @@ export class PostComponent implements OnInit {
     private userService: UserService
   ) {}
 
-  ngOnInit(): void {
-    // console.log(this.postInfo);
-  }
+  ngOnInit(): void {}
 
   canModify(): boolean {
     if (
