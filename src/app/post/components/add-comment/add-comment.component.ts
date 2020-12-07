@@ -46,6 +46,7 @@ export class AddCommentComponent implements OnInit {
     if (this.form.value.content !== null) {
       this.postService.addNewPost(this.form.value).subscribe(
         (res) => {
+          this.form.reset();
           // EMIT TO PARENT SIMULATE UPDATE FROM SERVER (WITHOUT PAGE RELOAD NEEDED)
           const transferCommentInfo = {
             ...res,

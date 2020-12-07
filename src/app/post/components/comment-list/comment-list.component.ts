@@ -8,17 +8,14 @@ import { UserService } from 'src/app/user/user.service';
   styleUrls: ['./comment-list.component.scss'],
 })
 export class CommentListComponent implements OnInit {
-  public user: UserState;
-
   @Input() public commentList;
+  @Input() public user;
   @Input() public postId;
 
   constructor(private userService: UserService) {}
 
   ngOnInit(): void {
-    this.userService.userState$.subscribe((res) => (this.user = res));
-
-    // console.log(this.commentList);
+    console.log(this.commentList);
   }
 
   // UI : AFFICHER LE COMMENTAIRE DEPOSE

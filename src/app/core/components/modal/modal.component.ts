@@ -41,6 +41,7 @@ export class ModalComponent implements OnInit {
   deletePost() {
     this.postService.deletePost(this.data.postId).subscribe(
       (res) => {
+        // UPDATE POST STATE
         let newPostState = this.posts;
         newPostState.forEach((post) => {
           if (post.id == this.data.parentPostId) {
@@ -54,6 +55,7 @@ export class ModalComponent implements OnInit {
       (err) => {
         // erreur possible de parsing, qui n'empèche pas la requête de s'exécuter
         if (err.status === 200) {
+          // UPDATE POST STATE
           let newPostState = this.posts;
           newPostState.forEach((post) => {
             if (post.id == this.data.parentPostId) {

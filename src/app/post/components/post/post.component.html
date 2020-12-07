@@ -55,6 +55,7 @@
     <app-comment-list
       (transferComment)="addComment($event)"
       [commentList]="postInfo.comments"
+      [user]="user"
       [postId]="postInfo.id"
     ></app-comment-list>
   </div>

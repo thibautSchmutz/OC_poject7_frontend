@@ -24,19 +24,19 @@ export class CommentComponent implements OnInit {
   constructor(private matDialog: MatDialog) {}
 
   ngOnInit(): void {
-    // console.log(this.commentInfo);
+    console.log(this.commentInfo);
   }
 
-  // canModify(): boolean {
-  //   if (
-  //     this.commentInfo.user_id == this.user.currentUSer.id.toString() ||
-  //     this.user.admin === true
-  //   ) {
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // }
+  canModify(): boolean {
+    if (
+      this.commentInfo.user_id == this.user.currentUser.id.toString() ||
+      this.user.admin === true
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   ModalDeletePost() {
     this.matDialog.open(ModalComponent, {

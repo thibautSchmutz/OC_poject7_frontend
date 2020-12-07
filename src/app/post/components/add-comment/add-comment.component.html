@@ -1,7 +1,11 @@
 <form [formGroup]="form" (ngSubmit)="addComment()">
   <!-- CONTENT -->
   <div class="form-group">
-    <textarea formControlName="content"></textarea>
+    <textarea
+      placeholder="Ecrivez votre commentaire ici..."
+      appTextareaAutogrow
+      formControlName="content"
+    ></textarea>
   </div>
   <button [disabled]="form.value.content === null" type="submit">
     Ajouter

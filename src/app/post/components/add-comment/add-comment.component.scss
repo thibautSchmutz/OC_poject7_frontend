@@ -1,0 +1,54 @@
+@import "../../../shared/variables";
+
+form {
+  margin-top: 1rem;
+  display: flex;
+  width: 100%;
+
+  .form-group {
+    width: 80%;
+
+    textarea {
+      font-family: "Poppins", sans-serif;
+      font-size: 1rem;
+      min-height: 6rem;
+      outline: none;
+      width: 100%;
+      overflow: hidden;
+      resize: none;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      background-color: $base-color;
+      @include base-shadow(0.1rem, 0.1rem, null);
+
+      &::placeholder {
+        font-style: italic;
+      }
+
+      &:focus {
+        @include base-shadow(0.1rem, 0.1rem, inset);
+      }
+    }
+  }
+
+  button {
+    height: 6rem;
+    width: 20%;
+    margin-left: 1rem;
+
+    border-radius: 1rem;
+    border: none;
+    outline: none;
+
+    font-size: 1.2rem;
+    // color: $punchy-color;
+
+    background-color: $base-color;
+    @include base-shadow(0.1rem, 0.1rem, null);
+
+    &:active {
+      color: $neutral-color;
+      @include base-shadow(0.1rem, 0.1rem, inset);
+    }
+  }
+}

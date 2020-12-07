@@ -22,7 +22,7 @@ import { AuthService } from './services/auth.service';
 import { PostService } from '../post/post.service';
 import { UserService } from '../user/user.service';
 
-// AUTRES
+// INTERCEPTORS
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 

@@ -7,6 +7,7 @@ import { CommentListComponent } from './components/comment-list/comment-list.com
 import { CommentComponent } from './components/comment/comment.component';
 import { AddCommentComponent } from './components/add-comment/add-comment.component';
 import { SharedModule } from '../shared/shared.module';
+import { TextareaAutogrowDirective } from '../core/directives/textarea-autogrow.directive';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { SharedModule } from '../shared/shared.module';
     CommentListComponent,
     CommentComponent,
     AddCommentComponent,
+    TextareaAutogrowDirective,
   ],
   imports: [CommonModule, PostRoutingModule, SharedModule],
   providers: [],
