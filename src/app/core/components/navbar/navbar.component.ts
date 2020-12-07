@@ -13,7 +13,7 @@ import { AuthService } from '../../services/auth.service';
 export class NavbarComponent implements OnInit {
   @ViewChild('submenu') submenu: ElementRef<HTMLInputElement>;
 
-  public isAuth$: BehaviorSubject<boolean>;
+  public isAuth: boolean;
   public userImage: string;
 
   constructor(
@@ -22,17 +22,10 @@ export class NavbarComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.isAuth$ = this.authService.isAuth$;
-    // this.userImage$ = this.userService.currentUser.pipe(pluck('imageUrl'));
-    // if (this.userService.currentUser) {
-    //   this.getUserImage();
-    // }
-
-    this.userImage = this.userService.currentUser.imageUrl;
-  }
-
-  getUserImage() {
-    return this.userService.currentUser.imageUrl;
+    this.authService.isAuth$.subscribe((res) => (this.isAuth = res));
+    this.userService.userState$
+      .pipe(pluck('currentUser', 'imageUrl'))
+      .subscribe((res) => (this.userImage = res));
   }
 
   openSubMenu() {

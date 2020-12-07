@@ -1,24 +1,32 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { UserService } from 'src/app/user/user.service';
 import { User } from '../../user/model/user';
+import { IsAuthGuard } from '../guards/is-auth.guard';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  // USER AUTH
-  public isAuth$ = new BehaviorSubject<boolean>(false);
+  // AUTHSTATE
+  private isAuth = new BehaviorSubject<boolean>(false);
+
+  // GET AUTHSTATE
+  public isAuth$ = this.isAuth.asObservable();
+
+  // UPDATE AUTHSTATE
+  public updateAuthState(bool: boolean) {
+    this.isAuth.next(bool);
+  }
 
   constructor(private http: HttpClient, private userService: UserService) {
     // SESSION PERSIST
-    // Si un token est présent dans le localStorage, on passe la valeur "true" à isAuth$
     if (localStorage.getItem('token')) {
-      this.isAuth$.next(true);
-      this.userService.getCurrentUser(localStorage.getItem('userId'));
+      this.updateAuthState(true);
+      this.userService.initializeUserState(localStorage.getItem('userId'));
     }
   }
 
@@ -31,14 +39,10 @@ export class AuthService {
       )
       .pipe(
         tap((res) => {
-          if (res.userId == '1') {
-            this.userService.admin = true;
-          }
-          // this.user_id = res.userId;
           localStorage.setItem('userId', res.userId);
           localStorage.setItem('token', `Bearer ${res.token}`);
-          this.userService.getCurrentUser(res.userId);
-          this.isAuth$.next(true);
+          this.userService.initializeUserState(res.userId);
+          this.updateAuthState(true);
         })
       );
   }
@@ -53,9 +57,13 @@ export class AuthService {
 
   // LOGOUT
   logout() {
-    this.isAuth$.next(false);
+    this.updateAuthState(false);
     localStorage.clear();
-    this.userService.clearCurrentUser();
-    this.userService.admin = false;
+    this.userService.updateUserState({
+      currentUser: {
+        imageUrl: '',
+      },
+      admin: false,
+    });
   }
 }

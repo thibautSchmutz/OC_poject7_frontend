@@ -70,7 +70,6 @@ export class LoginComponent implements OnInit {
     if (this.form.valid) {
       this.authService.login(this.form.value).subscribe(
         (res) => {
-          this.userService.getCurrentUser(res.userId);
           this.router.navigate(['/']);
         },
         (err) => {

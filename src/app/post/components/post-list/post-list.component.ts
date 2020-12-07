@@ -3,6 +3,8 @@ import { PostService } from '../../post.service';
 import { Post } from '../../post';
 import { Router } from '@angular/router';
 import { groupBy, map } from 'rxjs/operators';
+import { UserState } from 'src/app/user/model/user';
+import { UserService } from 'src/app/user/user.service';
 
 @Component({
   selector: 'app-post-list',
@@ -10,12 +12,21 @@ import { groupBy, map } from 'rxjs/operators';
   styleUrls: ['./post-list.component.scss'],
 })
 export class PostListComponent implements OnInit {
+  public user: UserState;
   public posts: Post[];
 
-  constructor(private postService: PostService, private router: Router) {}
+  constructor(
+    private userService: UserService,
+    private postService: PostService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.postService.allPosts
+    this.userService.userState$.subscribe((res) => (this.user = res));
+
+    this.postService.getAllPosts();
+
+    this.postService.allPosts$
       .pipe(
         map((lessons) =>
           lessons.sort(
@@ -24,6 +35,8 @@ export class PostListComponent implements OnInit {
           )
         )
       )
-      .subscribe((posts) => (this.posts = posts));
+      .subscribe((posts) => {
+        this.posts = posts;
+      });
   }
 }

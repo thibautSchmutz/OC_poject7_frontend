@@ -12,22 +12,18 @@ import { UserService } from 'src/app/user/user.service';
   styleUrls: ['./post.component.scss'],
 })
 export class PostComponent implements OnInit {
+  @Input() public user;
   @Input() public postInfo;
   public commentSectionOpened: boolean = false;
 
-  constructor(
-    private authService: AuthService,
-    private matDialog: MatDialog,
-    private postService: PostService,
-    private userService: UserService
-  ) {}
+  constructor(private matDialog: MatDialog, private postService: PostService) {}
 
   ngOnInit(): void {}
 
   canModify(): boolean {
     if (
-      this.postInfo.user_id == this.userService.currentUser.id.toString() ||
-      this.userService.currentUser.id.toString() === '1'
+      this.postInfo.user_id == this.user.currentUser.id.toString() ||
+      this.user.admin === true
     ) {
       return true;
     } else {
@@ -48,25 +44,18 @@ export class PostComponent implements OnInit {
       el.classList.remove('card-footer-cta_clicked');
       // SEND REMOVE LIKE TO SERVER
       this.postService
-        .removeLike(
-          this.postInfo.id,
-          this.userService.currentUser.id.toString()
-        )
+        .removeLike(this.postInfo.id, this.user.currentUser.id.toString())
         .subscribe((res) => {
           console.log(res);
-          // UPDATE POSTS STATE
-          this.postService.updateAllPostsState();
         });
       // LIKE
     } else {
       el.classList.add('card-footer-cta_clicked');
       // SEND ADD LIKE TO SERVER
       this.postService
-        .addLike(this.postInfo.id, this.userService.currentUser.id.toString())
+        .addLike(this.postInfo.id, this.user.currentUser.id.toString())
         .subscribe((res) => {
           console.log(res);
-          // UPDATE POSTS STATE
-          this.postService.updateAllPostsState();
         });
     }
   }
@@ -75,8 +64,7 @@ export class PostComponent implements OnInit {
   addLikeUI() {
     return this.postInfo.likes.some(
       (el) =>
-        el.like.like_user_id.toString() ===
-        this.userService.currentUser.id.toString()
+        el.like.like_user_id.toString() === this.user.currentUser.id.toString()
     );
   }
 

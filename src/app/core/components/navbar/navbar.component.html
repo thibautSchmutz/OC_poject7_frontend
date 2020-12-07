@@ -9,12 +9,8 @@
     <app-add-post title="Ajouter un post"></app-add-post>
   </div>
   <div>
-    <div class="auth-menu-container" *ngIf="isAuth$ | async; else notauth">
-      <img
-        *ngIf="getUserImage()"
-        [src]="getUserImage()"
-        (click)="openSubMenu()"
-      />
+    <div class="auth-menu-container" *ngIf="isAuth; else notauth">
+      <img *ngIf="userImage" [src]="userImage" (click)="openSubMenu()" />
       <ul #submenu class="sub-menu">
         <a routerLink="/user"><li>Mon compte</li></a>
         <a routerLink="/login" (click)="logout()"><li>Déconnexion</li></a>

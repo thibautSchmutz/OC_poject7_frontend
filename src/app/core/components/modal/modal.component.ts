@@ -1,6 +1,8 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { Post } from 'src/app/post/post';
 import { PostService } from 'src/app/post/post.service';
 
 @Component({
@@ -9,6 +11,8 @@ import { PostService } from 'src/app/post/post.service';
   styleUrls: ['./modal.component.scss'],
 })
 export class ModalComponent implements OnInit {
+  private posts: Post[];
+
   constructor(
     private router: Router,
     public dialogRef: MatDialogRef<ModalComponent>,
@@ -16,7 +20,9 @@ export class ModalComponent implements OnInit {
     private postService: PostService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.postService.allPosts$.subscribe((res) => (this.posts = res));
+  }
 
   login() {
     this.router.navigate(['/connect/login']);
@@ -35,13 +41,28 @@ export class ModalComponent implements OnInit {
   deletePost() {
     this.postService.deletePost(this.data.postId).subscribe(
       (res) => {
-        console.log(res);
-        this.postService.updatePostState();
+        let newPostState = this.posts;
+        newPostState.forEach((post) => {
+          if (post.id == this.data.parentPostId) {
+            post.comments = post.comments.filter(
+              (comment) => comment.id != this.data.postId
+            );
+          }
+        });
+        this.postService.updatePostState(newPostState);
       },
       (err) => {
         // erreur possible de parsing, qui n'empèche pas la requête de s'exécuter
         if (err.status === 200) {
-          this.postService.updatePostState();
+          let newPostState = this.posts;
+          newPostState.forEach((post) => {
+            if (post.id == this.data.parentPostId) {
+              post.comments = post.comments.filter(
+                (comment) => comment.id != this.data.postId
+              );
+            }
+          });
+          this.postService.updatePostState(newPostState);
         }
         console.log(err);
       }

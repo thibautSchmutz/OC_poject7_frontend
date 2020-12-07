@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PostService } from 'src/app/post/post.service';
+import { UserState } from 'src/app/user/model/user';
 import { UserService } from 'src/app/user/user.service';
 import { toFormData } from '../../../utils/formdata-builder';
 
@@ -10,6 +11,7 @@ import { toFormData } from '../../../utils/formdata-builder';
   styleUrls: ['./post-form.component.scss'],
 })
 export class PostFormComponent implements OnInit {
+  private user: UserState;
   @Output()
   public closeModal: EventEmitter<boolean> = new EventEmitter<boolean>();
 
@@ -23,6 +25,7 @@ export class PostFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.userService.userState$.subscribe((res) => (this.user = res));
     // CREATION FORMULAIRE
     this.form = this.fb.group({
       user_id: [null],
@@ -31,7 +34,7 @@ export class PostFormComponent implements OnInit {
     });
 
     this.form.patchValue({
-      user_id: this.userService.currentUser.id,
+      user_id: this.user.currentUser.id,
     });
   }
 
@@ -54,7 +57,8 @@ export class PostFormComponent implements OnInit {
       // ENVOYER FORMULAIRE AU SERVEUR VIA POST SERVICE
       this.postService.addNewPost(formData).subscribe(
         (res) => {
-          this.postService.updatePostState();
+          console.log(res);
+          this.postService.getAllPosts();
         },
         (err) => console.log(err)
       );

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserState } from 'src/app/user/model/user';
 import { UserService } from 'src/app/user/user.service';
 import { PostService } from '../../post.service';
 
@@ -9,6 +10,7 @@ import { PostService } from '../../post.service';
   styleUrls: ['./add-comment.component.scss'],
 })
 export class AddCommentComponent implements OnInit {
+  @Input() user: UserState;
   @Input() postId;
   @Output()
   public transferComment: EventEmitter<Object> = new EventEmitter<Object>();
@@ -35,7 +37,7 @@ export class AddCommentComponent implements OnInit {
     });
 
     this.form.patchValue({
-      user_id: this.userService.currentUser.id,
+      user_id: this.user.currentUser.id,
     });
   }
 
@@ -44,14 +46,13 @@ export class AddCommentComponent implements OnInit {
     if (this.form.value.content !== null) {
       this.postService.addNewPost(this.form.value).subscribe(
         (res) => {
-          // EMIT TO PARENT SIMULATE UPDATE FROM SERVER
+          // EMIT TO PARENT SIMULATE UPDATE FROM SERVER (WITHOUT PAGE RELOAD NEEDED)
           const transferCommentInfo = {
-            content: this.form.value.content,
-            createdAt: new Date().toString(),
+            ...res,
             creator: {
-              firstName: this.userService.currentUser.firstName,
-              lastName: this.userService.currentUser.lastName,
-              imageUrl: this.userService.currentUser.imageUrl,
+              firstName: this.user.currentUser.firstName,
+              lastName: this.user.currentUser.lastName,
+              imageUrl: this.user.currentUser.imageUrl,
             },
           };
           this.transferComment.emit(transferCommentInfo);

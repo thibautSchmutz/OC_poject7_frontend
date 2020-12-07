@@ -9,25 +9,21 @@ import { AuthService } from '../core/services/auth.service';
   providedIn: 'root',
 })
 export class PostService {
-  // SUBJECT
-  private allPosts$: BehaviorSubject<Post[]> = new BehaviorSubject([]);
-  public allPosts = this.allPosts$.asObservable();
-
-  constructor(private http: HttpClient, private authService: AuthService) {
-    this.updateAllPostsState();
+  // POST STATE
+  private allPosts: BehaviorSubject<Post[]> = new BehaviorSubject([]);
+  // POST STATE OBSERVABLE
+  public allPosts$ = this.allPosts.asObservable();
+  // POST STATE UPDATE
+  updatePostState(state) {
+    this.allPosts.next(state);
   }
 
-  getAllPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>(`${environment.apiUrl}/posts`);
-  }
+  constructor(private http: HttpClient, private authService: AuthService) {}
 
-  updateAllPostsState() {
-    this.getAllPosts().subscribe(
-      (res) => {
-        this.allPosts$.next(res);
-      },
-      (err) => console.log(err)
-    );
+  getAllPosts() {
+    this.http.get<Post[]>(`${environment.apiUrl}/posts`).subscribe((res) => {
+      this.updatePostState(res);
+    });
   }
 
   addNewPost(postInfo): Observable<Post> {
@@ -53,10 +49,5 @@ export class PostService {
       `${environment.apiUrl}/likes/${postId.toString()}/${userId}/delete`,
       { responseType: 'text' }
     );
-  }
-
-  // STATE MANAGEMENT
-  updatePostState() {
-    this.getAllPosts().subscribe((posts) => this.allPosts$.next(posts));
   }
 }

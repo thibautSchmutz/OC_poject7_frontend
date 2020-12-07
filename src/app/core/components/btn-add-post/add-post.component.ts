@@ -11,12 +11,12 @@ import { ModalComponent } from '../modal/modal.component';
   styleUrls: ['./add-post.component.scss'],
 })
 export class AddPostComponent implements OnInit {
-  public isAuth$: BehaviorSubject<boolean>;
+  public isAuth: boolean;
 
   constructor(private authService: AuthService, private matDialog: MatDialog) {}
 
   ngOnInit(): void {
-    this.isAuth$ = this.authService.isAuth$;
+    this.authService.isAuth$.subscribe((res) => (this.isAuth = res));
   }
 
   openModal() {
