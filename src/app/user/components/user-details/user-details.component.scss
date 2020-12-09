@@ -1,3 +1,58 @@
+@import "../../../shared/variables";
+
 :host {
-  padding-top: 10rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card {
+  position: relative;
+
+  margin-top: 12rem;
+  padding: 3rem;
+  background-color: $base-color;
+  @include base-shadow(0.1rem, 0.1rem, null);
+  border-radius: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  font-family: "Poppins", sans-serif;
+
+  &-img {
+    position: absolute;
+    top: -5rem;
+    height: 10rem;
+    border-radius: 50%;
+  }
+
+  &-name {
+    margin-top: 4rem;
+    margin-bottom: 3rem;
+    font-weight: bold;
+    font-size: 4rem;
+    color: $base-color;
+    @include text-shadow(0.2rem, 0.2rem, null);
+  }
+
+  &-btn {
+    button {
+      padding: 1rem;
+      margin-right: 1rem;
+      background-color: $base-color;
+      color: $neutral-color-2;
+      font-size: 1rem;
+      font-weight: 450;
+      @include base-shadow(0.1rem, 0.1rem, null);
+      border-radius: 0.3rem;
+      cursor: pointer;
+
+      &:hover {
+        color: $punchy-color;
+      }
+    }
+  }
 }
