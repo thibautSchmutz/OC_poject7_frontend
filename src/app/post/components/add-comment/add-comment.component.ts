@@ -43,7 +43,7 @@ export class AddCommentComponent implements OnInit {
 
   // SUBMIT
   addComment() {
-    if (this.form.value.content !== null) {
+    if (this.form.value.content) {
       this.postService.addNewPost(this.form.value).subscribe(
         (res) => {
           this.form.reset();

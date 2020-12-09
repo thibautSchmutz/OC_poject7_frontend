@@ -4,7 +4,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { ModalComponent } from '../../../core/components/modal/modal.component';
 import { PostService } from '../../post.service';
 import { Post } from '../../post';
-import { UserService } from 'src/app/user/user.service';
 
 @Component({
   selector: 'app-post',
@@ -13,7 +12,7 @@ import { UserService } from 'src/app/user/user.service';
 })
 export class PostComponent implements OnInit {
   @Input() public user;
-  @Input() public postInfo;
+  @Input() public postInfo: Post;
   public commentSectionOpened: boolean = false;
 
   constructor(private matDialog: MatDialog, private postService: PostService) {}
@@ -22,8 +21,8 @@ export class PostComponent implements OnInit {
 
   canModify(): boolean {
     if (
-      this.postInfo.user_id == this.user.currentUser.id.toString() ||
-      this.user.admin === true
+      this.postInfo.user_id === this.user?.currentUser?.id ||
+      this.user?.admin === true
     ) {
       return true;
     } else {
@@ -62,9 +61,10 @@ export class PostComponent implements OnInit {
 
   // CONDITONALY SHOW LIKES
   addLikeUI() {
-    return this.postInfo.likes.some(
+    return this.postInfo?.likes?.some(
       (el) =>
-        el.like.like_user_id.toString() === this.user.currentUser.id.toString()
+        el.like.like_user_id.toString() ===
+        this.user?.currentUser?.id?.toString()
     );
   }
 

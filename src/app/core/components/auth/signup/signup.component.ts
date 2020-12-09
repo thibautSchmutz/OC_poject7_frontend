@@ -1,17 +1,11 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import {
-  Form,
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
 import { toFormData } from '../../../utils/formdata-builder';
+import { Router } from '@angular/router';
 // Modal
 import { MatDialog } from '@angular/material/dialog';
 import { ModalComponent } from '../../modal/modal.component';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',

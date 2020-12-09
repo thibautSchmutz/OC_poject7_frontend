@@ -32,7 +32,7 @@
   <div class="form-group">
     <label>Mot de passe<span>*</span> :</label>
     <div class="password-container">
-      <input formControlName="password" type="password" />
+      <input #password formControlName="password" type="password" />
       <span *ngIf="password.invalid && password.touched" class="errorMessage"
         >Doit contenir au moins 6 caractères</span
       >
