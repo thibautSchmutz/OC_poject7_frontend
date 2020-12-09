@@ -77,3 +77,17 @@
     </div>
   </div>
 </ng-container>
+<!-- EDIT ACCOUNT -->
+<ng-container *ngIf="data.editPost">
+  <h1 mat-dialog-title>Editer le compte</h1>
+  <div class="edit-account" mat-dialog-content>
+    <app-edit-account (closeModal)="closeModal()"></app-edit-account>
+  </div>
+</ng-container>
+<!-- EDIT PASSWORD -->
+<ng-container *ngIf="data.editPassword">
+  <h1 mat-dialog-title>Editer le mot de passe</h1>
+  <div class="edit-account" mat-dialog-content>
+    <app-edit-password (closeModal)="closeModal()"></app-edit-password>
+  </div>
+</ng-container>

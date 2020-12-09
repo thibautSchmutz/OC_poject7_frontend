@@ -5,7 +5,7 @@
     {{ user.currentUser.lastName | uppercase }}
   </h1>
   <div class="card-btn">
-    <button>Editer le compte</button>
-    <button>Changer mot de passe</button>
+    <button (click)="editAccount()">Editer le compte</button>
+    <button (click)="editPassword()">Changer mot de passe</button>
   </div>
 </div>

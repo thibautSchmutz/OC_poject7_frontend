@@ -1,0 +1,16 @@
+<form [formGroup]="form" (ngSubmit)="editAccount()">
+  <!-- CONTENT -->
+  <input
+    placeholder="user.currentUser.firstName"
+    type="text"
+    formControlName="firstName"
+  />
+  <input
+    placeholder="user.currentUser.lastName"
+    type="text"
+    formControlName="lastName"
+  />
+  <!-- IMAGE LOADER -->
+  <app-image-upload (chosenImage)="patchImage($event)"></app-image-upload>
+  <button type="submit">Valider</button>
+</form>

@@ -38,4 +38,15 @@ export class UserService {
         });
       });
   }
+
+  editAccount(form: FormData, user_id) {
+    return this.http.put(`${environment.apiUrl}/users/${user_id}/update`, form);
+  }
+
+  editPassword(form, user_id) {
+    return this.http.put(
+      `${environment.apiUrl}/users/${user_id}/update-password`,
+      form
+    );
+  }
 }

@@ -16,6 +16,8 @@ import { AddPostComponent } from './components/btn-add-post/add-post.component';
 import { PostFormComponent } from './components/btn-add-post/post-form/post-form.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { ImageUploadComponent } from './components/image-upload/image-upload.component';
+import { EditAccountComponent } from '../user/components/edit-account/edit-account.component';
+import { EditPasswordComponent } from '../user/components/edit-password/edit-password.component';
 
 // SERVICES
 import { AuthService } from './services/auth.service';
@@ -36,6 +38,8 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     PostFormComponent,
     ModalComponent,
     ImageUploadComponent,
+    EditAccountComponent,
+    EditPasswordComponent,
   ],
   imports: [
     CommonModule,

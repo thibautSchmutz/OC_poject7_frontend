@@ -24,8 +24,10 @@
 
   &-img {
     position: absolute;
+    object-fit: cover;
     top: -5rem;
     height: 10rem;
+    width: 10rem;
     border-radius: 50%;
   }
 
