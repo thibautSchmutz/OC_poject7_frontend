@@ -1,7 +1,9 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserState } from '../../model/user';
-import { UserService } from '../../user.service';
+import { UserService } from '../../services/user.service';
+import { ModalComponent } from '../../../core/components/modal/modal.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-edit-password',
@@ -15,7 +17,11 @@ export class EditPasswordComponent implements OnInit {
   // DECLARATION FORMULAIRE
   form: FormGroup;
 
-  constructor(private userService: UserService, private fb: FormBuilder) {}
+  constructor(
+    private userService: UserService,
+    private fb: FormBuilder,
+    private matDialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.userService.userState$.subscribe((res) => (this.user = res));
@@ -36,11 +42,16 @@ export class EditPasswordComponent implements OnInit {
         .editPassword(this.form.value, this.user.currentUser.id)
         .subscribe(
           (res) => {
-            console.log(res);
             // FERMETURE DE LA MODAL
             this.closeModal.emit(true);
           },
-          (err) => console.log(err)
+          (err) => {
+            // OUVERTURE NEW MODAL
+            this.matDialog.open(ModalComponent, {
+              data: { editPasswordError: err },
+              panelClass: 'custom-dialog-container',
+            });
+          }
         );
     }
   }

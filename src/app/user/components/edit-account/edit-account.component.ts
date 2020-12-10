@@ -1,8 +1,10 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { toFormData } from 'src/app/core/utils/formdata-builder';
 import { UserState } from '../../model/user';
-import { UserService } from '../../user.service';
+import { UserService } from '../../services/user.service';
+import { ModalComponent } from '../../../core/components/modal/modal.component';
 
 @Component({
   selector: 'app-edit-account',
@@ -16,7 +18,11 @@ export class EditAccountComponent implements OnInit {
   // DECLARATION FORMULAIRE
   form: FormGroup;
 
-  constructor(private userService: UserService, private fb: FormBuilder) {}
+  constructor(
+    private userService: UserService,
+    private fb: FormBuilder,
+    private matDialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.userService.userState$.subscribe((res) => (this.user = res));
@@ -59,7 +65,13 @@ export class EditAccountComponent implements OnInit {
             // FERMETURE DE LA MODAL
             this.closeModal.emit(true);
           },
-          (err) => console.log(err)
+          (err) => {
+            // OUVERTURE NEW MODAL
+            this.matDialog.open(ModalComponent, {
+              data: { editAccountError: err },
+              panelClass: 'custom-dialog-container',
+            });
+          }
         );
     }
   }

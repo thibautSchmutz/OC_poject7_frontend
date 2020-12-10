@@ -32,15 +32,21 @@
   }
 
   &-name {
+    display: flex;
     margin-top: 4rem;
     margin-bottom: 3rem;
     font-weight: bold;
     font-size: 4rem;
     color: $base-color;
     @include text-shadow(0.2rem, 0.2rem, null);
+
+    p:first-child {
+      margin-right: 1.5rem;
+    }
   }
 
   &-btn {
+    display: flex;
     button {
       padding: 1rem;
       margin-right: 1rem;
@@ -54,6 +60,30 @@
 
       &:hover {
         color: $punchy-color;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  :host {
+    padding: 2rem;
+  }
+  .card {
+    &-img {
+    }
+    &-name {
+      flex-direction: column;
+      align-items: center;
+      p:first-child {
+        margin-right: 0;
+        margin-bottom: 1.5rem;
+      }
+    }
+    &-btn {
+      flex-direction: column;
+      button:first-child {
+        margin-bottom: 1rem;
       }
     }
   }

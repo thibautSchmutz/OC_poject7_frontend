@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { UserState } from 'src/app/user/model/user';
-import { UserService } from 'src/app/user/user.service';
+import { Post } from '../../models/post';
 
 @Component({
   selector: 'app-comment-list',
@@ -8,18 +8,11 @@ import { UserService } from 'src/app/user/user.service';
   styleUrls: ['./comment-list.component.scss'],
 })
 export class CommentListComponent implements OnInit {
-  @Input() public commentList;
-  @Input() public user;
+  @Input() public commentList: Post[];
+  @Input() public user: UserState;
   @Input() public postId;
 
-  constructor(private userService: UserService) {}
+  constructor() {}
 
-  ngOnInit(): void {
-    console.log(this.commentList);
-  }
-
-  // UI : AFFICHER LE COMMENTAIRE DEPOSE
-  addComment($event) {
-    this.commentList.push($event);
-  }
+  ngOnInit(): void {}
 }

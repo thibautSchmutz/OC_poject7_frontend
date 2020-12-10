@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { PostService } from '../../post.service';
-import { Post } from '../../post';
+import { PostService } from '../../services/post.service';
+import { Post } from '../../models/post';
 import { Router } from '@angular/router';
-import { groupBy, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { UserState } from 'src/app/user/model/user';
-import { UserService } from 'src/app/user/user.service';
+import { UserService } from 'src/app/user/services/user.service';
 
 @Component({
   selector: 'app-post-list',
@@ -24,6 +24,7 @@ export class PostListComponent implements OnInit {
   ngOnInit(): void {
     this.userService.userState$.subscribe((res) => (this.user = res));
 
+    // Initialisation pour les débuts de session
     this.postService.getAllPosts();
 
     this.postService.allPosts$

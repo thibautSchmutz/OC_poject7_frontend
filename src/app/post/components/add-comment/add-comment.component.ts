@@ -1,8 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserState } from 'src/app/user/model/user';
-import { UserService } from 'src/app/user/user.service';
-import { PostService } from '../../post.service';
+import { UserService } from 'src/app/user/services/user.service';
+import { Post } from '../../models/post';
+import { PostService } from '../../services/post.service';
 
 @Component({
   selector: 'app-add-comment',
@@ -15,6 +16,8 @@ export class AddCommentComponent implements OnInit {
   @Output()
   public transferComment: EventEmitter<Object> = new EventEmitter<Object>();
 
+  public posts: Post[];
+
   // DECLARATION FORMULAIRE
   public form: FormGroup;
 
@@ -25,6 +28,8 @@ export class AddCommentComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.postService.allPosts$.subscribe((res) => (this.posts = res));
+
     // CREATION FORMULAIRE
     this.form = this.fb.group({
       parent_post_id: [null],
@@ -46,17 +51,23 @@ export class AddCommentComponent implements OnInit {
     if (this.form.value.content) {
       this.postService.addNewPost(this.form.value).subscribe(
         (res) => {
+          // RESET LE FORM
           this.form.reset();
-          // EMIT TO PARENT SIMULATE UPDATE FROM SERVER (WITHOUT PAGE RELOAD NEEDED)
-          const transferCommentInfo = {
-            ...res,
-            creator: {
-              firstName: this.user.currentUser.firstName,
-              lastName: this.user.currentUser.lastName,
-              imageUrl: this.user.currentUser.imageUrl,
-            },
-          };
-          this.transferComment.emit(transferCommentInfo);
+          this.form.patchValue({
+            parent_post_id: this.postId,
+          });
+          this.form.patchValue({
+            user_id: this.user.currentUser.id,
+          });
+
+          // UPDATE POST STATE
+          let newPostState = this.posts;
+          newPostState.forEach((post) => {
+            if (post.id == this.postId) {
+              post.comments.push({ ...res, creator: this.user });
+            }
+          });
+          this.postService.updatePostState(newPostState);
         },
         (err) => console.log(err)
       );

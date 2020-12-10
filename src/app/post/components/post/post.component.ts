@@ -1,9 +1,8 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { AuthService } from 'src/app/core/services/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalComponent } from '../../../core/components/modal/modal.component';
-import { PostService } from '../../post.service';
-import { Post } from '../../post';
+import { PostService } from '../../services/post.service';
+import { Post } from '../../models/post';
 
 @Component({
   selector: 'app-post',

@@ -1,3 +1,7 @@
+<!-- ############## -->
+<!-- #### AUTH #### -->
+<!-- ############## -->
+
 <!-- AUTHFORMS INVALID -->
 <ng-container *ngIf="data.authFormInvalid">
   <h1 mat-dialog-title>Saisie incorrecte</h1>
@@ -59,6 +63,11 @@
     </div>
   </div>
 </ng-container>
+
+<!-- ############## -->
+<!-- #### POST #### -->
+<!-- ############## -->
+
 <!-- ADD POST -->
 <ng-container *ngIf="data.addPost">
   <h1 mat-dialog-title>Partagez vos idées</h1>
@@ -77,11 +86,29 @@
     </div>
   </div>
 </ng-container>
+
+<!-- ############## -->
+<!-- #### USER #### -->
+<!-- ############## -->
+
 <!-- EDIT ACCOUNT -->
-<ng-container *ngIf="data.editPost">
+<ng-container *ngIf="data.editAccount">
   <h1 mat-dialog-title>Editer le compte</h1>
   <div class="edit-account" mat-dialog-content>
     <app-edit-account (closeModal)="closeModal()"></app-edit-account>
+  </div>
+</ng-container>
+<!-- EDIT ACCOUNT ERROR -->
+<ng-container *ngIf="data.editAccountError">
+  <h1 mat-dialog-title>Erreur</h1>
+  <div mat-dialog-content>
+    <p *ngIf="data.editPasswordError.status === 500">
+      Nous rencontrons un problème technique, veuillez ré-essayer plus tard.
+    </p>
+    <p *ngIf="data.editPasswordError.status === 401">Mot de passe incorrect.</p>
+    <div class="btn-container">
+      <button class="secondary-btn" (click)="closeModal()">D'accord</button>
+    </div>
   </div>
 </ng-container>
 <!-- EDIT PASSWORD -->
@@ -89,5 +116,18 @@
   <h1 mat-dialog-title>Editer le mot de passe</h1>
   <div class="edit-account" mat-dialog-content>
     <app-edit-password (closeModal)="closeModal()"></app-edit-password>
+  </div>
+</ng-container>
+<!-- EDIT PASSWORD ERROR -->
+<ng-container *ngIf="data.editPasswordError">
+  <h1 mat-dialog-title>Erreur</h1>
+  <div mat-dialog-content>
+    <p *ngIf="data.editPasswordError.status === 500">
+      Nous rencontrons un problème technique, veuillez ré-essayer plus tard.
+    </p>
+    <p *ngIf="data.editPasswordError.status === 401">Mot de passe incorrect.</p>
+    <div class="btn-container">
+      <button class="secondary-btn" (click)="closeModal()">D'accord</button>
+    </div>
   </div>
 </ng-container>

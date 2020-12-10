@@ -95,7 +95,6 @@ export class SignupComponent implements OnInit {
     }
     // ENVOI AU SERVEUR
     if (this.form.valid) {
-      console.log('signup form.value', this.form.value);
       // Utilisatation d'un FormData pour assigner chaque type de champs (surtout pour l'image de type "file")
       let formData: FormData = toFormData(this.form.value);
 
@@ -112,7 +111,6 @@ export class SignupComponent implements OnInit {
                 this.router.navigate(['/']);
               },
               (err) => {
-                console.log(err);
                 this.matDialog.open(ModalComponent, {
                   data: { loginError: err },
                   panelClass: 'custom-dialog-container',
@@ -121,7 +119,6 @@ export class SignupComponent implements OnInit {
             );
         },
         (err) => {
-          console.log(err);
           this.matDialog.open(ModalComponent, {
             data: { signupError: err },
             panelClass: 'custom-dialog-container',

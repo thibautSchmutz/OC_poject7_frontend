@@ -1,9 +1,9 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { PostService } from 'src/app/post/post.service';
+import { PostService } from 'src/app/post/services/post.service';
 import { UserState } from 'src/app/user/model/user';
-import { UserService } from 'src/app/user/user.service';
-import { toFormData } from '../../../utils/formdata-builder';
+import { UserService } from 'src/app/user/services/user.service';
+import { toFormData } from '../../../../core/utils/formdata-builder';
 
 @Component({
   selector: 'app-post-form',
@@ -57,7 +57,6 @@ export class PostFormComponent implements OnInit {
       // ENVOYER FORMULAIRE AU SERVEUR VIA POST SERVICE
       this.postService.addNewPost(formData).subscribe(
         (res) => {
-          console.log(res);
           this.postService.getAllPosts();
         },
         (err) => console.log(err)

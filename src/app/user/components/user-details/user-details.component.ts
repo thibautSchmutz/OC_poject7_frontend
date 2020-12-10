@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserState } from '../../model/user';
-import { UserService } from '../../user.service';
+import { UserService } from '../../services/user.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalComponent } from '../../../core/components/modal/modal.component';
 
@@ -16,13 +16,12 @@ export class UserDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.userService.userState$.subscribe((res) => {
       this.user = res;
-      console.log(this.user);
     });
   }
 
   editAccount() {
     this.matDialog.open(ModalComponent, {
-      data: { editPost: true },
+      data: { editAccount: true },
       panelClass: 'custom-dialog-container',
     });
   }

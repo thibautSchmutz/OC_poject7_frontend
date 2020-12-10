@@ -23,7 +23,7 @@ export interface Post {
   updatedAt: Date;
   parent_post_id?: any;
   user_id: number;
-  comments: any[];
+  comments?: any[];
   likes?: Like[];
   creator: Creator;
 }

@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../../../core/services/auth.service';
 // Modal
 import { MatDialog } from '@angular/material/dialog';
-import { ModalComponent } from '../modal/modal.component';
+import { ModalComponent } from '../../../../core/components/modal/modal.component';
 
 @Component({
   selector: 'app-add-post',

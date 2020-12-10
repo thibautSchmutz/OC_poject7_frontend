@@ -1,13 +1,12 @@
 @import "../../../shared/variables";
 
-// :host {
-//   align-self: flex-end;
-// }
-
+:host {
+  min-width: 50%;
+  max-width: 80%;
+}
 .card {
   margin-bottom: 0.5rem;
   position: relative;
-  min-width: 30rem;
   background-color: $base-color;
   @include base-shadow(0.1rem, 0.1rem, inset);
   border-radius: 1rem;
@@ -41,7 +40,7 @@
       }
       &-name {
         font-weight: bold;
-        margin: 0 !important;
+        margin: 0 1rem 0 0 !important;
       }
     }
 

@@ -40,8 +40,7 @@ form {
     border: none;
     outline: none;
 
-    font-size: 1.2rem;
-    // color: $punchy-color;
+    font-size: 1rem;
 
     background-color: $base-color;
     @include base-shadow(0.1rem, 0.1rem, null);

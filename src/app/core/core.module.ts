@@ -12,8 +12,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FourOhFourComponent } from './components/four-oh-four/four-oh-four.component';
 import { SignupComponent } from './components/auth/signup/signup.component';
 import { LoginComponent } from './components/auth/login/login.component';
-import { AddPostComponent } from './components/btn-add-post/add-post.component';
-import { PostFormComponent } from './components/btn-add-post/post-form/post-form.component';
+import { AddPostComponent } from '../post/components/add-post/btn/add-post.component';
+import { PostFormComponent } from '../post/components/add-post/post-form/post-form.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { ImageUploadComponent } from './components/image-upload/image-upload.component';
 import { EditAccountComponent } from '../user/components/edit-account/edit-account.component';
@@ -21,8 +21,8 @@ import { EditPasswordComponent } from '../user/components/edit-password/edit-pas
 
 // SERVICES
 import { AuthService } from './services/auth.service';
-import { PostService } from '../post/post.service';
-import { UserService } from '../user/user.service';
+import { PostService } from '../post/services/post.service';
+import { UserService } from '../user/services/user.service';
 
 // INTERCEPTORS
 import { HTTP_INTERCEPTORS } from '@angular/common/http';

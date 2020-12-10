@@ -3,9 +3,8 @@ import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { UserService } from 'src/app/user/user.service';
+import { UserService } from 'src/app/user/services/user.service';
 import { User } from '../../user/model/user';
-import { IsAuthGuard } from '../guards/is-auth.guard';
 
 @Injectable({
   providedIn: 'root',

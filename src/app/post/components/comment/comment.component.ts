@@ -24,7 +24,7 @@ export class CommentComponent implements OnInit {
   constructor(private matDialog: MatDialog) {}
 
   ngOnInit(): void {
-    console.log(this.commentInfo);
+    // console.log(this.commentInfo);
   }
 
   canModify(): boolean {

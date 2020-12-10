@@ -1,9 +1,8 @@
-import { ThrowStmt } from '@angular/compiler';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { Post } from 'src/app/post/post';
-import { PostService } from 'src/app/post/post.service';
+import { Post } from 'src/app/post/models/post';
+import { PostService } from 'src/app/post/services/post.service';
 
 @Component({
   selector: 'app-modal',
@@ -25,12 +24,12 @@ export class ModalComponent implements OnInit {
   }
 
   login() {
-    this.router.navigate(['/connect/login']);
+    this.router.navigate(['/login']);
     this.dialogRef.close();
   }
 
   signup() {
-    this.router.navigate(['/connect/signup']);
+    this.router.navigate(['/signup']);
     this.dialogRef.close();
   }
 
@@ -41,22 +40,11 @@ export class ModalComponent implements OnInit {
   deletePost() {
     this.postService.deletePost(this.data.postId).subscribe(
       (res) => {
+        console.log(res);
         // UPDATE POST STATE
         let newPostState = this.posts;
-        newPostState.forEach((post) => {
-          if (post.id == this.data.parentPostId) {
-            post.comments = post.comments.filter(
-              (comment) => comment.id != this.data.postId
-            );
-          }
-        });
-        this.postService.updatePostState(newPostState);
-      },
-      (err) => {
-        // erreur possible de parsing, qui n'empèche pas la requête de s'exécuter
-        if (err.status === 200) {
-          // UPDATE POST STATE
-          let newPostState = this.posts;
+        if (this.data.parentPostId) {
+          // si c'est un commentaire
           newPostState.forEach((post) => {
             if (post.id == this.data.parentPostId) {
               post.comments = post.comments.filter(
@@ -64,8 +52,15 @@ export class ModalComponent implements OnInit {
               );
             }
           });
-          this.postService.updatePostState(newPostState);
+        } else {
+          // si c'est un post
+          newPostState = newPostState.filter(
+            (post) => post.id != this.data.postId
+          );
         }
+        this.postService.updatePostState(newPostState);
+      },
+      (err) => {
         console.log(err);
       }
     );

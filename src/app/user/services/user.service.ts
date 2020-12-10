@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment';
-import { User } from './model/user';
-import { UserState } from './model/user';
+import { environment } from '../../../environments/environment';
+import { User } from '../model/user';
+import { UserState } from '../model/user';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
