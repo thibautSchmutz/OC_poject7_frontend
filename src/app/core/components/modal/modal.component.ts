@@ -3,6 +3,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Post } from 'src/app/post/models/post';
 import { PostService } from 'src/app/post/services/post.service';
+import { UserService } from '../../../user/services/user.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-modal',
@@ -16,7 +18,9 @@ export class ModalComponent implements OnInit {
     private router: Router,
     public dialogRef: MatDialogRef<ModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data,
-    private postService: PostService
+    private postService: PostService,
+    private userService: UserService,
+    private authService: AuthService
   ) {}
 
   ngOnInit() {
@@ -59,6 +63,19 @@ export class ModalComponent implements OnInit {
           );
         }
         this.postService.updatePostState(newPostState);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+    this.dialogRef.close();
+  }
+
+  deleteAccount() {
+    this.userService.deleteAccount(this.data.user_id).subscribe(
+      (res) => {
+        this.authService.logout();
+        this.router.navigate(['/signup']);
       },
       (err) => {
         console.log(err);

@@ -131,3 +131,14 @@
     </div>
   </div>
 </ng-container>
+<!-- DELETE ACCOUNT -->
+<ng-container *ngIf="data.deleteAccount">
+  <h1 mat-dialog-title>Supprimer le Compte</h1>
+  <div mat-dialog-content>
+    <p>Êtes-vous sûr de vouloir supprimer votre compte ?</p>
+    <div class="btn-container">
+      <button class="secondary-btn" (click)="closeModal()">Non</button>
+      <button class="primary-btn" (click)="deleteAccount()">Oui</button>
+    </div>
+  </div>
+</ng-container>

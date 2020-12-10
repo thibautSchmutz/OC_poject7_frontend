@@ -32,4 +32,11 @@ export class UserDetailsComponent implements OnInit {
       panelClass: 'custom-dialog-container',
     });
   }
+
+  deleteAccount() {
+    this.matDialog.open(ModalComponent, {
+      data: { deleteAccount: true, user_id: this.user.currentUser.id },
+      panelClass: 'custom-dialog-container',
+    });
+  }
 }

@@ -82,8 +82,12 @@
     }
     &-btn {
       flex-direction: column;
-      button:first-child {
+      button {
         margin-bottom: 1rem;
+      }
+      .delete {
+        color: $punchy-color;
+        font-weight: bolder;
       }
     }
   }

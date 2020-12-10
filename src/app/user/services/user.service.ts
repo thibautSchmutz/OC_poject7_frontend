@@ -49,4 +49,8 @@ export class UserService {
       form
     );
   }
+
+  deleteAccount(user_id) {
+    return this.http.delete(`${environment.apiUrl}/users/${user_id}/delete`);
+  }
 }
