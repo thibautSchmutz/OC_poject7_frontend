@@ -64,7 +64,7 @@ export class AddCommentComponent implements OnInit {
           let newPostState = this.posts;
           newPostState.forEach((post) => {
             if (post.id == this.postId) {
-              post.comments.push({ ...res, creator: this.user });
+              post.comments.push({ ...res, creator: this.user.currentUser });
             }
           });
           this.postService.updatePostState(newPostState);
