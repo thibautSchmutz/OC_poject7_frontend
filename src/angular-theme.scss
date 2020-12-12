@@ -17,8 +17,5 @@ $groupomania-theme: mat-light-theme(
   $groupomania-accent,
   $groupomania-warn
 );
-// Optionnelle : Dark theme
-// @@@@ inclure un dark theme ici de la manière qu'on a fait le light-theme
 
-// On dit à angular d'utiliser ce thème au travers d'une de ses mixins
 @include angular-material-theme($groupomania-theme);

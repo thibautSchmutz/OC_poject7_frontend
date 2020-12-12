@@ -7,7 +7,7 @@ import { ModalComponent } from '../../../core/components/modal/modal.component';
   templateUrl: './comment.component.html',
   styleUrls: ['./comment.component.scss'],
 })
-export class CommentComponent implements OnInit {
+export class CommentComponent {
   @Input() public user;
   @Input() public commentInfo;
 
@@ -22,10 +22,6 @@ export class CommentComponent implements OnInit {
   }
 
   constructor(private matDialog: MatDialog) {}
-
-  ngOnInit(): void {
-    console.log(this.commentInfo);
-  }
 
   canModify(): boolean {
     if (

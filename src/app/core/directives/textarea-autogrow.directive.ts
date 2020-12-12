@@ -1,5 +1,4 @@
 import { Directive, ElementRef } from '@angular/core';
-
 @Directive({ selector: '[appTextareaAutogrow]' })
 export class TextareaAutogrowDirective {
   constructor(el: ElementRef) {

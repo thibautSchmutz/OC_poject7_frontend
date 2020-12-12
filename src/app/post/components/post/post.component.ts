@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalComponent } from '../../../core/components/modal/modal.component';
 import { PostService } from '../../services/post.service';
@@ -9,14 +9,12 @@ import { Post } from '../../models/post';
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.scss'],
 })
-export class PostComponent implements OnInit {
+export class PostComponent {
   @Input() public user;
   @Input() public postInfo: Post;
   public commentSectionOpened: boolean = false;
 
   constructor(private matDialog: MatDialog, private postService: PostService) {}
-
-  ngOnInit(): void {}
 
   canModify(): boolean {
     if (

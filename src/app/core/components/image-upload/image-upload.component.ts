@@ -7,11 +7,8 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class ImageUploadComponent {
   public image;
-  @Output() public chosenImage: EventEmitter<Object> = new EventEmitter<
-    Object
-  >();
-
-  constructor() {}
+  @Output()
+  public chosenImage: EventEmitter<Object> = new EventEmitter<Object>();
 
   onFileChange(event) {
     // emit de l'imageURL vers le parent

@@ -50,10 +50,7 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     ReactiveFormsModule,
     QuillModule.forRoot({
       modules: {
-        toolbar: [
-          ['bold', 'italic'], // toggled buttons
-          ['link'], // link and image, video
-        ],
+        toolbar: [['bold', 'italic'], ['link']],
       },
       placeholder: 'Ecrivez votre post içi...',
     }),

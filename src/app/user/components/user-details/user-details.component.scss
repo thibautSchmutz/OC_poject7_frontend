@@ -62,6 +62,10 @@
         color: $punchy-color;
       }
     }
+    .delete {
+      color: $punchy-color;
+      font-weight: bolder;
+    }
   }
 }
 
@@ -84,10 +88,6 @@
       flex-direction: column;
       button {
         margin-bottom: 1rem;
-      }
-      .delete {
-        color: $punchy-color;
-        font-weight: bolder;
       }
     }
   }

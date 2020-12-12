@@ -44,7 +44,6 @@ export class ModalComponent implements OnInit {
   deletePost() {
     this.postService.deletePost(this.data.postId).subscribe(
       (res) => {
-        console.log(res);
         // UPDATE POST STATE
         let newPostState = this.posts;
         if (this.data.parentPostId) {

@@ -1,7 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { BehaviorSubject, Observable, pipe, Subject, Subscription } from 'rxjs';
 import { pluck } from 'rxjs/operators';
-import { User } from 'src/app/user/model/user';
 import { UserService } from 'src/app/user/services/user.service';
 import { AuthService } from '../../services/auth.service';
 

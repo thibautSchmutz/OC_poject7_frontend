@@ -4,18 +4,6 @@
     ($inset) ($size) ($size) ($blur) #c6cdd8;
   border: 0.05rem solid $base-border;
 }
-// @mixin base-shadow($size, $blur, $inset) {
-//   box-shadow: ($inset) (-$size) (-$size) ($blur) rgb(250, 253, 255),
-//     1px 1px 0px rgba(243, 249, 255, 0.05),
-//     ($inset) ($size) ($size) ($blur) rgba(190, 203, 216, 1);
-//   border: 0.05rem solid $base-border;
-// }
-// @mixin base-shadow($size, $blur, $inset) {
-//   box-shadow: ($inset) (-$size) (-$size) ($blur) rgba(243, 249, 255, 1),
-//     1px 1px 0px rgba(243, 249, 255, 0.05),
-//     ($inset) ($size) ($size) ($blur) rgba(190, 203, 216, 1);
-//   // border: 0.05rem solid $base-border;
-// }
 
 @mixin second-shadow($size, $blur, $inset) {
   box-shadow: ($inset) (-$size) (-$size) ($blur) #0b3663,
@@ -27,132 +15,16 @@
   text-shadow: ($inset) (-$size) (-$size) ($blur) #ffffff,
     ($inset) ($size) ($size) ($blur) #bec5d1;
 }
-// @mixin text-shadow($size, $blur, $inset) {
-//   text-shadow: ($inset) (-$size) (-$size) ($blur) rgba(243, 249, 255, 1),
-//     1px 1px 0px rgba(243, 249, 255, 0.05),
-//     ($inset) ($size) ($size) ($blur) rgba(190, 203, 216, 1);
-// }
 
-// Dark colors
+// Colors
 $base-color: #ecf0f3;
-// $base-color: #e1ecf7;
 $lighter-color: #ecf0f3;
 $base-border: #fafdff;
 $neutral-color: #174f8a;
 $neutral-color-2: #092f58;
 $punchy-color: #cf4350;
-$base-shadow: -7px -7px 15px #f3f9ff, 7px 7px 14px #b2bec9;
-$base-shadow-inset: inset -4.5px -4.5px 8px #f3f9ff,
-  1px 1px 0px rgba(243, 249, 255, 0.05), inset 4.5px 4.5px 8px #becbd8;
 
 // Font colors
 $base-font-color: #1a1b1e;
 $lighter-font-color: #8e919b;
 $second-font-color: #6fa2d8;
-
-// MATERIAL_THEMES
-
-// @@@@ : PRIMARY COLOR
-//
-// $mat-blue-grey: (
-//   50: #eceff1,
-//   100: #cfd8dc,
-//   200: #b0bec5,
-//   300: #90a4ae,
-//   400: #78909c,
-//   500: #607d8b,
-//   600: #546e7a,
-//   700: #455a64,
-//   800: #37474f,
-//   900: #263238,
-//   A100: #cfd8dc,
-//   A200: #b0bec5,
-//   A400: #78909c,
-//   A700: #455a64,
-//   contrast: (
-//     50: $dark-primary-text,
-//     100: $dark-primary-text,
-//     200: $dark-primary-text,
-//     300: $dark-primary-text,
-//     400: $light-primary-text,
-//     500: $light-primary-text,
-//     600: $light-primary-text,
-//     700: $light-primary-text,
-//     800: $light-primary-text,
-//     900: $light-primary-text,
-//     A100: $dark-primary-text,
-//     A200: $dark-primary-text,
-//     A400: $light-primary-text,
-//     A700: $light-primary-text,
-//   )
-// );
-//
-// @@@@ : ACCENT COLOR
-//
-// $mat-red: (
-//   50: #ffebee,
-//   100: #ffcdd2,
-//   200: #ef9a9a,
-//   300: #e57373, // LIGHTER
-//   400: #ef5350,
-//   500: #f44336,
-//   600: #e53935,
-//   700: #d32f2f,
-//   800: #c62828, // DEFAULT
-//   900: #b71c1c, // DARKER
-//   A100: #ff8a80,
-//   A200: #ff5252,
-//   A400: #ff1744,
-//   A700: #d50000,
-//   contrast: (
-//     50: $dark-primary-text,
-//     100: $dark-primary-text,
-//     200: $dark-primary-text,
-//     300: $dark-primary-text,
-//     400: $dark-primary-text,
-//     500: $light-primary-text,
-//     600: $light-primary-text,
-//     700: $light-primary-text,
-//     800: $light-primary-text,
-//     900: $light-primary-text,
-//     A100: $dark-primary-text,
-//     A200: $light-primary-text,
-//     A400: $light-primary-text,
-//     A700: $light-primary-text,
-//   )
-// );
-//
-// @@@@ : WARN COLOR
-//
-// $mat-deep-orange: (
-//   50: #fbe9e7,
-//   100: #ffccbc,
-//   200: #ffab91,
-//   300: #ff8a65,
-//   400: #ff7043,
-//   500: #ff5722,
-//   600: #f4511e,
-//   700: #e64a19,
-//   800: #d84315,
-//   900: #bf360c,
-//   A100: #ff9e80,
-//   A200: #ff6e40,
-//   A400: #ff3d00,
-//   A700: #dd2c00,
-//   contrast: (
-//     50: $dark-primary-text,
-//     100: $dark-primary-text,
-//     200: $dark-primary-text,
-//     300: $dark-primary-text,
-//     400: $dark-primary-text,
-//     500: $light-primary-text,
-//     600: $light-primary-text,
-//     700: $light-primary-text,
-//     800: $light-primary-text,
-//     900: $light-primary-text,
-//     A100: $dark-primary-text,
-//     A200: $dark-primary-text,
-//     A400: $light-primary-text,
-//     A700: $light-primary-text,
-//   )
-// );

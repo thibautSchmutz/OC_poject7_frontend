@@ -98,7 +98,7 @@ form {
     margin-top: 1rem;
     padding: 2rem;
     align-self: center;
-    box-shadow: $base-shadow;
+    @include base-shadow(0.1rem, 0.1rem, null);
     border-radius: 1rem;
     position: relative;
     overflow: hidden;
