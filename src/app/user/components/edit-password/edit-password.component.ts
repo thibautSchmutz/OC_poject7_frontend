@@ -41,7 +41,7 @@ export class EditPasswordComponent implements OnInit {
       this.userService
         .editPassword(this.form.value, this.user.currentUser.id)
         .subscribe(
-          (res) => {
+          (_res) => {
             // FERMETURE DE LA MODAL
             this.closeModal.emit(true);
           },

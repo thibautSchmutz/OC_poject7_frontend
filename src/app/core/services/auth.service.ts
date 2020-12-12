@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
+// ENV
+import { environment } from '../../../environments/environment';
+// Models
+import { Auth } from '../models/auth';
+import { User } from '../../user/model/user';
+// Services
+import { UserService } from 'src/app/user/services/user.service';
+// RxJS
 import { BehaviorSubject, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { UserService } from 'src/app/user/services/user.service';
-import { User } from '../../user/model/user';
-import { Auth } from '../models/auth';
 
 @Injectable({
   providedIn: 'root',

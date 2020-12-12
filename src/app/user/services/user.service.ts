@@ -31,7 +31,7 @@ export class UserService {
     this.http
       .get<User>(`${environment.apiUrl}/users/${userId}`)
       .subscribe((user) => {
-        let admin = user.id.toString() === '1' ? true : false;
+        const admin = user.id.toString() === '1';
         this.updateUserState({
           currentUser: { ...user },
           admin,

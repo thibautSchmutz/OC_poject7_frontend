@@ -1,7 +1,9 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { pluck } from 'rxjs/operators';
-import { UserService } from 'src/app/user/services/user.service';
+// Services
 import { AuthService } from '../../services/auth.service';
+import { UserService } from 'src/app/user/services/user.service';
+// RxJS
+import { pluck } from 'rxjs/operators';
 
 @Component({
   selector: 'app-navbar',

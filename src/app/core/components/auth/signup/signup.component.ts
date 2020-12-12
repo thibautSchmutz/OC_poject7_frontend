@@ -1,8 +1,10 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../../../services/auth.service';
-import { toFormData } from '../../../utils/formdata-builder';
 import { Router } from '@angular/router';
+// Form
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { toFormData } from '../../../utils/formdata-builder';
+// Services
+import { AuthService } from '../../../services/auth.service';
 // Modal
 import { MatDialog } from '@angular/material/dialog';
 import { ModalComponent } from '../../modal/modal.component';

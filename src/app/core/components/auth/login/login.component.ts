@@ -1,8 +1,9 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
-import { UserService } from 'src/app/user/services/user.service';
+// Form
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+// Services
+import { AuthService } from '../../../services/auth.service';
 // Modal
 import { MatDialog } from '@angular/material/dialog';
 import { ModalComponent } from '../../modal/modal.component';
@@ -22,8 +23,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private matDialog: MatDialog,
-    private userService: UserService
+    private matDialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -69,7 +69,7 @@ export class LoginComponent implements OnInit {
     }
     if (this.form.valid) {
       this.authService.login(this.form.value).subscribe(
-        (res) => {
+        (_res) => {
           this.router.navigate(['/']);
         },
         (err) => {
