@@ -24,13 +24,13 @@ export class IsAuthGuard implements CanActivate {
     | boolean
     | UrlTree {
     let isAuth: boolean;
+
     this.authService.isAuth$.subscribe((boolean) => {
       isAuth = boolean;
+      if (isAuth !== true) {
+        this.router.navigate(['/login']);
+      }
     });
-
-    if (isAuth !== true) {
-      this.router.navigate(['/login']);
-    }
     return isAuth;
   }
 }
