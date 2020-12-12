@@ -5,6 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { UserService } from 'src/app/user/services/user.service';
 import { User } from '../../user/model/user';
+import { Auth } from '../models/auth';
 
 @Injectable({
   providedIn: 'root',
@@ -30,12 +31,9 @@ export class AuthService {
   }
 
   // LOGIN
-  login(userInfos): Observable<{ userId: string; token: string }> {
+  login(userInfos): Observable<Auth> {
     return this.http
-      .post<{ userId: string; token: string }>(
-        `${environment.apiUrl}/users/login`,
-        userInfos
-      )
+      .post<Auth>(`${environment.apiUrl}/users/login`, userInfos)
       .pipe(
         tap((res) => {
           localStorage.setItem('userId', res.userId);
