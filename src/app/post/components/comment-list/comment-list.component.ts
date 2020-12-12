@@ -7,12 +7,8 @@ import { Post } from '../../models/post';
   templateUrl: './comment-list.component.html',
   styleUrls: ['./comment-list.component.scss'],
 })
-export class CommentListComponent implements OnInit {
+export class CommentListComponent {
   @Input() public commentList: Post[];
   @Input() public user: UserState;
   @Input() public postId;
-
-  constructor() {}
-
-  ngOnInit(): void {}
 }

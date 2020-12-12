@@ -39,9 +39,6 @@ export class AddCommentComponent implements OnInit {
 
     this.form.patchValue({
       parent_post_id: this.postId,
-    });
-
-    this.form.patchValue({
       user_id: this.user.currentUser.id,
     });
   }
@@ -55,8 +52,6 @@ export class AddCommentComponent implements OnInit {
           this.form.reset();
           this.form.patchValue({
             parent_post_id: this.postId,
-          });
-          this.form.patchValue({
             user_id: this.user.currentUser.id,
           });
 

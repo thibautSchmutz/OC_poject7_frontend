@@ -35,8 +35,6 @@ export class EditAccountComponent implements OnInit {
 
     this.form.patchValue({
       firstName: this.user.currentUser.firstName,
-    });
-    this.form.patchValue({
       lastName: this.user.currentUser.lastName,
     });
   }
