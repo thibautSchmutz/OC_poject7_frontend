@@ -17,14 +17,10 @@ export class PostComponent {
   constructor(private matDialog: MatDialog, private postService: PostService) {}
 
   canModify(): boolean {
-    if (
-      this.postInfo.user_id === this.user?.currentUser?.id ||
+    return this.postInfo.user_id === this.user?.currentUser?.id ||
       this.user?.admin === true
-    ) {
-      return true;
-    } else {
-      return false;
-    }
+      ? true
+      : false;
   }
 
   ModalDeletePost() {
@@ -73,10 +69,6 @@ export class PostComponent {
       el.classList.add('card-footer-cta_clicked');
     }
     // DISPLAY COMMENT SECTION VIA NGIF DIRECTIVE
-    if (this.commentSectionOpened) {
-      this.commentSectionOpened = false;
-    } else {
-      this.commentSectionOpened = true;
-    }
+    this.commentSectionOpened = !this.commentSectionOpened;
   }
 }

@@ -1,20 +1,5 @@
-export interface LikeInfo {
-  like_post_id: number;
-  like_user_id: number;
-}
-
-export interface Like {
-  firstName: string;
-  lastName: string;
-  like: LikeInfo;
-}
-
-export interface Creator {
-  firstName: string;
-  lastName: string;
-  imageUrl: string;
-}
-
+import { Like } from './like';
+import { Creator } from './creator';
 export interface Post {
   id: number;
   content: string;
